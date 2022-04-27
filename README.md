@@ -7,3 +7,6 @@
 - **Data d’entrega**: 8 de juny de 2022
 - **Link del Desplegament**:
 - **Link del Projecte**: 
+### Descripció:
+### Objectius:
+### Tecnologies:
