@@ -10,3 +10,11 @@
 ### Descripció:
 ### Objectius:
 ### Tecnologies:
+## Desenvolupament de l’Aplicació
+### Planificació
+### Anàlisi previ
+### Disseny i implementació
+### Producció
+## Desplegament
+## Resultats i conclusions
+## Bibliografia i webgrafia
