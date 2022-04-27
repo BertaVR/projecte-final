@@ -1,20 +1,24 @@
-# Projecte-final
-## Introducció
-### Dades
-- **Títol del projecte**:
-- **Dades dels autors**: Berta Vergés Rodríguez
-- **Cicle Formatiu**: Desenvolupament d'aplicacions web
-- **Data d’entrega**: 8 de juny de 2022
-- **Link del Desplegament**:
-- **Link del Projecte**: 
-### Descripció
-### Objectius
-### Tecnologies
-## Desenvolupament de l’Aplicació
-### Planificació
-### Anàlisi previ
-### Disseny i implementació
-### Producció
-## Desplegament
-## Resultats i conclusions
-## Bibliografia i webgrafia
+# projecte-final
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
