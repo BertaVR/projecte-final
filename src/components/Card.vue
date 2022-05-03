@@ -1,5 +1,5 @@
 <template>
-  <v-card  class="mx-auto my-12" max-width="374">
+  <v-card class="mx-auto my-12" max-width="374">
     <template slot="progress">
       <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
     </template>
@@ -22,17 +22,15 @@
 
       <div id="calidad">Calidad: {{ objeto.calidad }}</div>
       <div id="stock">Stock: {{ objeto.stock }}</div>
-              <div id="items" v-for="item in objeto.items">
-        <div>{{item.nombre}}</div>
-        </div>
+
       <v-btn color="blue" elevation="2">Editar</v-btn>
     </v-card-text>
 
-    <v-divider class="mx-4"></v-divider>
     <v-card-actions>
 
 
       <v-spacer></v-spacer>
+      <div @click="show = !show">{{ show ? 'Ocultar items' : 'Ver Items' }}</div>
       <v-btn icon @click="show = !show">
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
@@ -43,9 +41,9 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for
-          sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you
-          add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                <div id="items" v-for="item in objeto.items">
+        <div>{{ item.nombre }}</div>
+      </div>
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -70,6 +68,9 @@
 <script>
 
 export default {
+      data: () => ({
+      show: false,
+    }),
  props: ['objeto']
 }
 
