@@ -1,13 +1,13 @@
 <template>
     <div class="packs">
         <div v-for="pack in packs" :key="pack.nombre">
-            <Card :objeto=pack></Card>
+            <PackCard :objeto=pack></PackCard>
         </div>
     </div>
 </template>
 <script>
 import axios from 'axios'
-import Card from './Card.vue'
+import PackCard from './PackCard.vue'
 export default {
     data() {
         return {
@@ -27,7 +27,7 @@ export default {
             }
         }
     },
-    components: { Card }
+    components: { PackCard }
 }
 </script>
 <style>
