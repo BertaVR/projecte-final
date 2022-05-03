@@ -1,10 +1,11 @@
 <template>
-  <v-card class="mx-auto my-12 packcard" max-width="374">
+  <v-card class="mx-auto my-12 packCard" max-width="374">
     <template slot="progress">
       <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
     </template>
 
-    <v-img height="250" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
+    <v-img height="250"
+      src="https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capybara-square-1.jpg.optimal.jpg"></v-img>
 
     <v-card-title id="titulo">{{ objeto.nombre }}</v-card-title>
 
@@ -23,8 +24,15 @@
       <div id="calidad">Calidad: {{ objeto.calidad }}</div>
       <div id="stock">Stock: {{ objeto.stock }}</div>
 
-      <v-btn color="blue" elevation="2">Editar</v-btn>
     </v-card-text>
+    <v-card-actions>
+
+      <v-btn color="primary" elevation="2">Editar</v-btn>
+
+
+      <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
+
+    </v-card-actions>
 
     <v-card-actions>
 
@@ -41,18 +49,16 @@
         <v-divider></v-divider>
 
         <v-card-text>
-                <div id="items" v-for="item in objeto.items">
-        <div>{{ item.nombre }}</div>
-      </div>
+          <div id="items" v-for="item in objeto.items">
+            <div>{{ item.nombre }}</div>
+          </div>
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
 </template>
 
-<script>
 
-</script>
 <style>
 #price {
   display: flex;
@@ -68,10 +74,36 @@
 <script>
 
 export default {
-      data: () => ({
-      show: false,
-    }),
- props: ['objeto']
+  data: () => ({
+
+    serverip: "127.0.0.1:3000",
+    show: false,
+
+  }),
+  props: ['objeto', 'actualizar'],
+  methods: {
+    borrarPack(pack) {
+      fetch(`http://${this.serverip}/packs/${pack.nombre}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Response OK Status:", response.status);
+            console.log("Item borrado:", response.statusText);
+            this.actualizar;
+          } else {
+            console.log("Response Status:", response.status);
+            console.log("Reponse statuts text:", response.statusText);
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        })
+    }
+  }
 }
 
 </script>

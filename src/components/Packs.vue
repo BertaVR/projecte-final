@@ -1,11 +1,12 @@
 <template>
     <div class="packs">
-        <div v-for="pack in packs" :key="pack.nombre">
+        <div v-for="pack in packs" :key="pack.nombre" :actualizar="inventarioPacks()">
             <PackCard :objeto=pack></PackCard>
         </div>
     </div>
 </template>
 <script>
+
 import axios from 'axios'
 import PackCard from './PackCard.vue'
 export default {
