@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="packs">
 <Packs></Packs>
 </div>
 </template>
@@ -9,7 +9,7 @@ import Packs from "../components/Packs.vue";
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: "PacksScreen",
   components: {
     Packs
 },
