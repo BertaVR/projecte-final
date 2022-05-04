@@ -1,6 +1,6 @@
 <template>
     <div class="packs">
-        <div v-for="pack in packs" :key="pack.nombre" :actualizar="inventarioPacks()">
+        <div v-for="pack in packs" :key="pack.nombre" >
             <PackCard :objeto=pack></PackCard>
         </div>
     </div>
