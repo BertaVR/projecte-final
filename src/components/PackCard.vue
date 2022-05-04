@@ -77,33 +77,46 @@ export default {
   data: () => ({
 
     serverip: "127.0.0.1:3000",
+    packs: [],
     show: false,
 
   }),
-  props: ['objeto', 'actualizar'],
+  props: ['objeto'],
   methods: {
-    borrarPack(pack) {
-      fetch(`http://${this.serverip}/packs/${pack.nombre}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
+    async inventarioPacks() { // TODO: Esto hay que refactorizarlo ya que es codigo repetido -> Hay que cogerlo del padre
+      try {
+        const packs = await axios.get(`http://${this.serverip}/packs`);
+        this.packs = packs.data;
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+  },
+  borrarPack(pack) {
+    fetch(`http://${this.serverip}/packs/${pack.nombre}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Response OK Status:", response.status);
+          console.log("Item borrado:", response.statusText);
+          this.inventarioPacks();
+        } else {
+          console.log("Response Status:", response.status);
+          console.log("Reponse statuts text:", response.statusText);
         }
       })
-        .then((response) => {
-          if (response.ok) {
-            console.log("Response OK Status:", response.status);
-            console.log("Item borrado:", response.statusText);
-            this.actualizar;
-          } else {
-            console.log("Response Status:", response.status);
-            console.log("Reponse statuts text:", response.statusText);
-          }
-        })
-        .catch((error) => {
-          console.log(error.message);
-        })
-    }
-  }
+      .catch((error) => {
+        console.log(error.message);
+      })
+  },
+
+
+  
 }
 
 </script>
