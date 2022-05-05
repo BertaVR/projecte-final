@@ -1,20 +1,20 @@
 <template>
     <form>
-        <v-text-field v-model="nombre" :error-messages="nombreErrores" :counter="10" label="Nombre" required
-            @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
-        <v-text-field v-model="precio" :error-messages="precioErrores" label="Precio" type="number" required
-            @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
-        <v-text-field v-model="calidad" :error-messages="calidadErrores" label="Calidad" type="number" required
-            @input="$v.calidad.$touch()" @blur="$v.calidad.$touch()"></v-text-field>
-        <v-text-field v-model="demanda" :error-messages="demandaErrores" label="Demanda" type="number" required
-            @input="$v.demanda.$touch()" @blur="$v.demanda.$touch()"></v-text-field>
+        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="10" label="Nombre"
+            required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
+        <v-text-field v-model="precio" ref="precio" :error-messages="precioErrores" label="Precio" type="number"
+            required @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
+        <v-text-field v-model="calidad" ref="calidad" :error-messages="calidadErrores" label="Calidad" type="number"
+            required @input="$v.calidad.$touch()" @blur="$v.calidad.$touch()"></v-text-field>
+        <v-text-field v-model="demanda" ref="demanda" :error-messages="demandaErrores" label="Demanda" type="number"
+            required @input="$v.demanda.$touch()" @blur="$v.demanda.$touch()"></v-text-field>
         <div>Selecciona un tipo de material:
-            <v-radio-group v-model="material" row>
-                <v-radio v-for="material in materiales" :key="material"
-                    :label="` ${material.charAt(0).toUpperCase() + material.slice(1)}`" :value="material"></v-radio>
+            <v-radio-group v-model="material" ref="material" row>
+                <v-radio v-for="material in materiales" :key="material" :label="capitalizar(material)"
+                    :value="material"></v-radio>
             </v-radio-group>
         </div>
-        <v-btn class="mr-4" @click="submit">
+        <v-btn class="mr-4" @click="addItem()">
             añadir item
         </v-btn>
         <v-btn @click="clear">
@@ -30,11 +30,11 @@ export default {
     mixins: [validationMixin],
 
     validations: {
-        nombre: { required, minLength: minLength(3), alphaNum },
+        nombre: { required, minLength: minLength(3) },
         precio: { required, decimal, minValue: minValue(0) },
         calidad: { required, integer, minValue: minValue(0), maxValue: maxValue(50) },
         demanda: { required, integer, minValue: minValue(0), maxValue: maxValue(100) },
-        
+
 
     },
 
@@ -44,7 +44,9 @@ export default {
         calidad: '',
         demanda: '',
         material: 'normal',
-        materiales: ['normal', 'consumible', 'indestructible']
+        materiales: ['normal', 'consumible', 'indestructible'],
+        serverip: "127.0.0.1:3000",
+
 
     }),
 
@@ -55,7 +57,6 @@ export default {
             if (!this.$v.nombre.$dirty) return errors
             !this.$v.nombre.minLength && errors.push('El nombre debe tener por lo menos 3 caracteres')
             !this.$v.nombre.required && errors.push('El campo nombre es obligatorio.')
-            !this.$v.nombre.alphaNum && errors.push('Por favor, escriba únicamente letras y números para el nombre.')
 
             return errors
         },
@@ -104,9 +105,47 @@ export default {
             this.calidad = ''
             this.demanda = ''
             this.material = 'normal'
+        },
+        capitalizar(p) {
+            return p.charAt(0).toUpperCase() + p.slice(1)
+        },
+        addItem() {
+
+
+            let data = {
+                nombre: this.$refs.nombre.value,
+                precio: this.$refs.precio.value,
+                calidad: this.$refs.calidad.value,
+                material: this.$refs.material.value,
+                demanda: this.$refs.demanda.value,
+                // stock: this.$refs.stock.value,
 
 
 
+            };
+
+            fetch(`http://${this.serverip}/items/add`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("Response OK Status:", response.status);
+                        console.log("Reponse OK status text:", response.statusText);
+                    } else {
+                        console.log("Response Status:", response.status);
+                        console.log("Reponse statuts text:", response.statusText);
+
+
+
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
         },
     },
 }
