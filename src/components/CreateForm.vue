@@ -103,6 +103,7 @@ export default {
             this.precio = ''
             this.calidad = ''
             this.demanda = ''
+            this.material = 'normal'
 
 
 
