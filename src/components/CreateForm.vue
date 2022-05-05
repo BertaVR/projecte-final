@@ -8,6 +8,8 @@
             required @input="$v.calidad.$touch()" @blur="$v.calidad.$touch()"></v-text-field>
         <v-text-field v-model="demanda" ref="demanda" :error-messages="demandaErrores" label="Demanda" type="number"
             required @input="$v.demanda.$touch()" @blur="$v.demanda.$touch()"></v-text-field>
+        <v-text-field v-model="stock" ref="stock" :error-messages="stockErrores" label="Stock" type="number" required
+            @input="$v.stock.$touch()" @blur="$v.stock.$touch()"></v-text-field>
         <div>Selecciona un tipo de material:
             <v-radio-group v-model="material" ref="material" row>
                 <v-radio v-for="material in materiales" :key="material" :label="capitalizar(material)"
@@ -20,6 +22,8 @@
         <v-btn @click="clear">
             reset
         </v-btn>
+          <p v-if="errors.length">{{errors[0]}}</p>
+
     </form>
 </template>
 <script>
@@ -34,6 +38,7 @@ export default {
         precio: { required, decimal, minValue: minValue(0) },
         calidad: { required, integer, minValue: minValue(0), maxValue: maxValue(50) },
         demanda: { required, integer, minValue: minValue(0), maxValue: maxValue(100) },
+        stock: { required, integer, minValue: minValue(1) }
 
 
     },
@@ -44,8 +49,10 @@ export default {
         calidad: '',
         demanda: '',
         material: 'normal',
+        stock: '',
         materiales: ['normal', 'consumible', 'indestructible'],
         serverip: "127.0.0.1:3000",
+        errors: []
 
 
     }),
@@ -91,6 +98,16 @@ export default {
 
 
             return errors
+        },
+        stockErrores() {
+            const errors = []
+            if (!this.$v.stock.$dirty) return errors
+            !this.$v.stock.required && errors.push('Es necesario especificar el stock.')
+            !this.$v.stock.integer && errors.push('El stock tiene que ser un número entero.')
+            !this.$v.stock.minValue && errors.push('El stock tiene que ser un número positivo.')
+
+
+            return errors
         }
     },
 
@@ -105,6 +122,8 @@ export default {
             this.calidad = ''
             this.demanda = ''
             this.material = 'normal'
+            this.demanda = ''
+
         },
         capitalizar(p) {
             return p.charAt(0).toUpperCase() + p.slice(1)
@@ -118,7 +137,7 @@ export default {
                 calidad: this.$refs.calidad.value,
                 material: this.$refs.material.value,
                 demanda: this.$refs.demanda.value,
-                // stock: this.$refs.stock.value,
+                stock: this.$refs.stock.value,
 
 
 
@@ -137,7 +156,7 @@ export default {
                         console.log("Reponse OK status text:", response.statusText);
                     } else {
                         console.log("Response Status:", response.status);
-                        console.log("Reponse statuts text:", response.statusText);
+                        console.log("Reponse statuts text:", response.statusText);   
 
 
 
@@ -147,6 +166,7 @@ export default {
                     console.log(error.message);
                 });
         },
+
     },
 }
 </script>
