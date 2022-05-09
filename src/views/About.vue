@@ -1,17 +1,17 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <CreatePackForm></CreatePackForm>
+    <CreateItemForm></CreateItemForm>
   </div>
 </template>
 <script>
-import CreatePackForm from "../components/CreatePackForm.vue";
+import CreateItemForm from "../components/CreateItemForm.vue";
 // @ is an alias to /src
 
 export default {
   name: "About",
   components: {
-    CreatePackForm
+    CreateItemForm
 },
 };
 </script>
