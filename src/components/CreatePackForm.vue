@@ -1,6 +1,6 @@
 <template>
     <form>
-        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="25" label="Nombre"
+        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
             required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
         <v-text-field v-model="precio" ref="precio" :error-messages="precioErrores" label="Precio" type="number"
             required @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
@@ -34,7 +34,7 @@ export default {
     mixins: [validationMixin],
 
     validations: {
-        nombre: { required, minLength: minLength(3), maxLength: maxLength(25) },
+        nombre: { required, minLength: minLength(3), maxLength: maxLength(40)) },
         precio: { required, decimal, minValue: minValue(0) },
         calidad: { required, integer, minValue: minValue(0), maxValue: maxValue(50) },
         demanda: { required, integer, minValue: minValue(0), maxValue: maxValue(100) },
@@ -64,7 +64,7 @@ export default {
             if (!this.$v.nombre.$dirty) return errors
             !this.$v.nombre.minLength && errors.push('El nombre debe tener por lo menos 3 caracteres')
             !this.$v.nombre.required && errors.push('El campo nombre es obligatorio.')
-            !this.$v.nombre.maxLength && errors.push('El nombre no puede tener más de 30 caracteres.')
+            !this.$v.nombre.maxLength && errors.push('El nombre no puede tener más de 40 caracteres.')
 
             return errors
         },
