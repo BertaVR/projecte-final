@@ -2,8 +2,15 @@
     <form>
         <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
             required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
-        <v-select v-model="itemsEnElPack" :items="items" label="Items" multiple chips
-            hint="Seleccione los items que tiene el pack" persistent-hint></v-select>
+            <br>
+       <v-autocomplete
+            v-model="itemsEnElPack"
+            :items="items"
+            dense
+            chips
+            label="Items"
+            multiple
+          ></v-autocomplete>
         <!-- Pendiente añadir buscador por usabilidad-->
 
         <v-btn class="mr-4" @click="añadirPack()">
