@@ -34,7 +34,7 @@ export default {
     mixins: [validationMixin],
 
     validations: {
-        nombre: { required, minLength: minLength(3), maxLength: maxLength(40)) },
+        nombre: { required, minLength: minLength(3), maxLength: maxLength(40) },
         precio: { required, decimal, minValue: minValue(0) },
         calidad: { required, integer, minValue: minValue(0), maxValue: maxValue(50) },
         demanda: { required, integer, minValue: minValue(0), maxValue: maxValue(100) },
