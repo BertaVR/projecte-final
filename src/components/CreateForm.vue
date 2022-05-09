@@ -1,6 +1,6 @@
 <template>
     <form>
-        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="10" label="Nombre"
+        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="30" label="Nombre"
             required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
         <v-text-field v-model="precio" ref="precio" :error-messages="precioErrores" label="Precio" type="number"
             required @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
@@ -170,3 +170,6 @@ export default {
     },
 }
 </script>
+<style>
+form{margin: 10%}
+</style>
