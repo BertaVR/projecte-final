@@ -16,7 +16,7 @@
                     :value="material"></v-radio>
             </v-radio-group>
         </div>
-        <v-btn class="mr-4" @click="addItem()">
+        <v-btn class="mr-4" @click="addItem()" :disabled="!datosValidos()">
             añadir item
         </v-btn>
         <v-btn @click="clear">
@@ -167,6 +167,7 @@ export default {
                     console.log(error.message);
                 });
         },
+        datosValidos(){return !this.errors}
 
     },
 }
