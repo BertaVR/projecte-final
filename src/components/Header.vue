@@ -1,11 +1,10 @@
 <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <template>
   <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-    <a href="javascript:void(0);" class="icon" @click="myFunction()">
+    <a href="#Packs" class="active">Packs</a>
+    <a href="#news">Items</a>
+    
+     <a href="javascript:void(0);" class="icon" @click="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
@@ -13,13 +12,22 @@
 <style>
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: rgb(36, 29, 39);
   overflow: hidden;
+}
+
+.topnav a:link {
+  color: #f2f2f2
+}
+
+.topnav a:visited {
+  color: #f2f2f2;
+
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
+  float: right;
   display: block;
   color: #f2f2f2;
   text-align: center;
@@ -30,14 +38,14 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgb(235, 209, 252);
   color: black;
 }
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #511863;
+  color: rgb(255, 255, 255);
 }
 
 /* Hide the link that should open and close the topnav on small screens */
