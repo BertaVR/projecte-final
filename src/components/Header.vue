@@ -1,8 +1,8 @@
 <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <template>
   <div class="topnav" id="myTopnav">
-    <a href="#Packs" class="active">Packs</a>
-    <a href="#news">Items</a>
+    <a href="/" class="active">Packs</a>
+    <a href="/about">Items</a>
     
      <a href="javascript:void(0);" class="icon" @click="myFunction()">
       <i class="fa fa-bars"></i>
