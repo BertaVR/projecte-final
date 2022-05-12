@@ -1,22 +1,23 @@
 <template>
-<div clasS="createPack">
-    <form>
-        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
-            required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
-        <br>
-        <v-autocomplete v-model="itemsEnElPack" :items="items" dense chips label="Items" multiple></v-autocomplete>
+    <div clasS="createPack">
+        <form>
+            <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
+                required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
+            <br>
+            <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores" required   @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items"
+                dense chips label="Items" multiple></v-autocomplete>
 
-        <v-btn class="mr-4" @click="añadirPack()">
-            añadir pack
-        </v-btn>
-        <v-btn @click="clear">
-            reset
-        </v-btn>
-        <v-btn @click="Document.getElementById('my-modal').show()"> Prueba </v-btn>
-        <p v-if="errors.length">{{ errors[0] }}</p>
+            <v-btn class="mr-4" @click="añadirPack()">
+                añadir pack
+            </v-btn>
+            <v-btn @click="clear">
+                reset
+            </v-btn>
+            <v-btn @click="Document.getElementById('my-modal').show()"> Prueba </v-btn>
+            <p v-if="errors.length">{{ errors[0] }}</p>
 
-    </form>
-    <ModalCreatePack id='my-modal'></ModalCreatePack>
+        </form>
+        <ModalCreatePack id='my-modal'></ModalCreatePack>
     </div>
 </template>
 <script>
@@ -28,6 +29,8 @@ export default {
     mixins: [validationMixin],
     validations: {
         nombre: { required, minLength: minLength(3), maxLength: maxLength(40) },
+        itemsEnElPack: { required},
+
     },
     data: () => ({
         nombre: "",
@@ -48,6 +51,14 @@ export default {
             !this.$v.nombre.maxLength && errors.push("El nombre no puede tener más de 40 caracteres.");
             return errors;
         },
+        itemsErrores() {
+            const errors = [];
+            if (!this.$v.itemsEnElPack.$dirty)
+                return errors;
+            !this.$v.itemsEnElPack.required && errors.push(`Añada al menos un item`);
+
+            return errors;
+        }
     },
     methods: {
         submit() {
