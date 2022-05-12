@@ -1,17 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <CreateItemForm></CreateItemForm>
+  <div>
+<Header></Header>
+    <Items></Items>
   </div>
 </template>
 <script>
-import CreateItemForm from "../components/CreateItemForm.vue";
+import Items from "../components/Items.vue";
+import Header from "../components/Header.vue";
 // @ is an alias to /src
 
 export default {
   name: "About",
   components: {
-    CreateItemForm
+    Header,
+    Items,
 },
 };
 </script>
