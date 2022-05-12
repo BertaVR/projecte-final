@@ -1,17 +1,10 @@
 <template>
+<div clasS="createPack">
     <form>
         <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
             required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
-            <br>
-       <v-autocomplete
-            v-model="itemsEnElPack"
-            :items="items"
-            dense
-            chips
-            label="Items"
-            multiple
-          ></v-autocomplete>
-        <!-- Pendiente añadir buscador por usabilidad-->
+        <br>
+        <v-autocomplete v-model="itemsEnElPack" :items="items" dense chips label="Items" multiple></v-autocomplete>
 
         <v-btn class="mr-4" @click="añadirPack()">
             añadir pack
@@ -19,88 +12,76 @@
         <v-btn @click="clear">
             reset
         </v-btn>
+        <v-btn @click="Document.getElementById('my-modal').show()"> Prueba </v-btn>
         <p v-if="errors.length">{{ errors[0] }}</p>
 
     </form>
+    <ModalCreatePack id='my-modal'></ModalCreatePack>
+    </div>
 </template>
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, decimal, maxLength, integer, minValue, maxValue } from 'vuelidate/lib/validators'
+import ModalCreatePack from './ModalCreatePack.vue'
 
 export default {
     mixins: [validationMixin],
-
     validations: {
         nombre: { required, minLength: minLength(3), maxLength: maxLength(40) },
-
-
     },
-
     data: () => ({
-        nombre: '',
-        materiales: ['normal', 'consumible', 'indestructible'],
+        nombre: "",
+        materiales: ["normal", "consumible", "indestructible"],
         serverip: "127.0.0.1:3000",
         errors: [],
         itemsEnElPack: [],
         items: [],
-
     }),
-    mounted() { this.getNombresItems() },
-
+    mounted() { this.getNombresItems(); },
     computed: {
-
         nombreErrores() {
-            const errors = []
-            if (!this.$v.nombre.$dirty) return errors
-            !this.$v.nombre.minLength && errors.push('El nombre debe tener por lo menos 3 caracteres')
-            !this.$v.nombre.required && errors.push('El campo nombre es obligatorio.')
-            !this.$v.nombre.maxLength && errors.push('El nombre no puede tener más de 40 caracteres.')
-
-            return errors
+            const errors = [];
+            if (!this.$v.nombre.$dirty)
+                return errors;
+            !this.$v.nombre.minLength && errors.push("El nombre debe tener por lo menos 3 caracteres");
+            !this.$v.nombre.required && errors.push("El campo nombre es obligatorio.");
+            !this.$v.nombre.maxLength && errors.push("El nombre no puede tener más de 40 caracteres.");
+            return errors;
         },
-
     },
-
     methods: {
         submit() {
-            this.$v.$touch()
+            this.$v.$touch();
         },
         clear() {
-            this.$v.$reset()
-            this.nombre = ''
+            this.$v.$reset();
+            this.nombre = "";
         },
         getNombresItems() {
-
-
             var miHeaders = new Headers();
-
             var miInit = {
-                method: 'GET',
+                method: "GET",
                 headers: miHeaders,
-                mode: 'cors',
+                mode: "cors",
                 // cambiarlo a force-cache => carga del disco
-                cache: 'default'
+                cache: "default"
             };
-
-
             fetch(`http://${this.serverip}/items`, miInit)
                 .then((response) => {
                     if (response.ok) {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);
                         response.json().then((json) => {
-                            console.log(json)
-
-                            let nombres = json.map(item => item.nombre)
-                            console.log(nombres)
-                            this.items = nombres
-                        }
-                        )
-
-                    } else {
+                            console.log(json);
+                            let nombres = json.map(item => item.nombre);
+                            console.log(nombres);
+                            this.items = nombres;
+                        });
+                    }
+                    else {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);
-                        return []
+                        return [];
                     }
                 })
                 .catch((error) => {
@@ -110,42 +91,31 @@ export default {
         añadirPack() {
             let data = {
                 nombre: this.nombre,
-                items: this.items
-                ,
-
-
-
-
+                items: this.items,
             };
-
             fetch(`http://${this.serverip}/packs/add`, {
-                method: 'POST',
+                method: "POST",
                 body: JSON.stringify(data),
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 }
             })
                 .then((response) => {
                     if (response.ok) {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
-
-                    } else {
+                    }
+                    else {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);
-
                     }
                 })
                 .catch((error) => {
                     console.log(error.message);
                 });
         }
-
-
     },
-
-
-
+    components: { ModalCreatePack }
 }
 </script>
 <style>
