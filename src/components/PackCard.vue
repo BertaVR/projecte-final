@@ -25,10 +25,9 @@
       <div id="stock">Stock: {{ objeto.stock }}</div>
 
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="botones">
 
-      <v-btn color="primary" elevation="2">Editar</v-btn>
-
+      <EditPackForm :objeto=objeto></EditPackForm>
 
       <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
 
@@ -59,7 +58,10 @@
 </template>
 
 
+
 <style>
+
+
 #price {
   display: flex;
   color: rgb(1, 8, 24);
@@ -72,13 +74,16 @@
 }
 </style>
 <script>
+import EditPackForm from "./EditPackForm.vue";
 
 export default {
+  components: { EditPackForm },
   data: () => ({
 
     serverip: "127.0.0.1:3000",
     packs: [],
     show: false,
+
 
   }),
   props: ['objeto'],
@@ -116,7 +121,7 @@ export default {
   },
 
 
-  
+
 }
 
 </script>
