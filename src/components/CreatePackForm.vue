@@ -1,11 +1,12 @@
 <template>
     <div clasS="createPack">
-        <form>
+        <form ref="addPackForm">
             <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
                 required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
             <br>
-            <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores" required   @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items"
-                dense chips label="Items" multiple></v-autocomplete>
+            <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores" required
+                @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items" dense chips
+                label="Items" multiple></v-autocomplete>
 
             <v-btn class="mr-4" @click="añadirPack()">
                 añadir pack
@@ -29,7 +30,7 @@ export default {
     mixins: [validationMixin],
     validations: {
         nombre: { required, minLength: minLength(3), maxLength: maxLength(40) },
-        itemsEnElPack: { required},
+        itemsEnElPack: { required },
 
     },
     data: () => ({
@@ -115,6 +116,10 @@ export default {
                     if (response.ok) {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
+                        // this.$refs['itemsEnElPack'].reset();
+
+                        this.$refs['addPackForm'].reset();
+
                     }
                     else {
                         console.log("Response Status:", response.status);
