@@ -38,7 +38,7 @@
 
                             <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores"
                                 required @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()"
-                                :items="items" dense chips label="Items" multiple></v-autocomplete>
+                                :items="inventarioItems" dense chips label="Items" multiple></v-autocomplete>
                         </v-col>
                         <v-col>
 
@@ -85,7 +85,7 @@ export default {
         itemsEnElPack: [],
         items: [],
     }),
-    props: ['objeto'],
+    props: ['objeto', 'inventarioItems'],
     //mounted() { this.getNombresItems(); }, //evitar que llame a todos
     computed: {
         nombreErrores() {
@@ -140,38 +140,7 @@ export default {
                     console.log(error.message);
                 });
         },
-        getNombresItems() {
-            var miHeaders = new Headers();
-            var miInit = {
-                method: "GET",
-                headers: miHeaders,
-                mode: "cors",
-                // cambiarlo a force-cache => carga del disco
-                cache: "default"
-            };
-            fetch(`http://${this.serverip}/items`, miInit)
-                .then((response) => {
-                    if (response.ok) {
-                        console.log("Response Status:", response.status);
-                        console.log("Reponse statuts text:", response.statusText);
-                        response.json().then((json) => {
-                            console.log(json);
-                            let nombres = json.map(item => item.nombre);
-                            console.log(nombres);
-                            this.items = nombres;
-                        });
-                    }
-                    else {
-                        console.log("Response Status:", response.status);
-                        console.log("Reponse statuts text:", response.statusText);
-                        return [];
-                    }
-                })
-                .catch((error) => {
-                    console.log(error.message);
-                });
-        },
-
+       
     },
     components: { ModalCreatePack }
 }

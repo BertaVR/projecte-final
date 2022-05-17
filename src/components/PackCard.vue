@@ -27,7 +27,7 @@
     </v-card-text>
     <v-card-actions class="botones">
 
-      <EditPackForm :objeto=objeto></EditPackForm>
+      <EditPackForm :inventarioItems=inventarioItems :objeto=objeto></EditPackForm>
 
       <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
 
@@ -86,8 +86,9 @@ export default {
 
 
   }),
-  props: ['objeto'],
+  props: ['objeto', 'inventarioItems'],
   methods: {
+    
     async inventarioPacks() { // TODO: Esto hay que refactorizarlo ya que es codigo repetido -> Hay que cogerlo del padre
       try {
         const packs = await axios.get(`http://${this.serverip}/packs`);
