@@ -10,7 +10,7 @@
                 <v-card-title>
                     <span class="text-h5">Editar {{ objeto.nombre }}</span>
                 </v-card-title>
-                <v-btn color="blue darken-1" text @click="dialog = false" id="cerrar">
+                <v-btn color="primary darken-1" text @click="dialog = false" id="cerrar">
                     Cerrar
                 </v-btn>
             </div>
@@ -24,7 +24,7 @@
                                 }}
                             </v-text-field>
                         </v-col>
-                        <v-col>
+                        <v-col class="boton">
 
                             <v-btn class="mr-4" color="primary" @click="modificarNombre()">
                                 modificar nombre
@@ -40,7 +40,7 @@
                                 required @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()"
                                 :items="inventarioItems" dense chips label="Items" multiple></v-autocomplete>
                         </v-col>
-                        <v-col>
+                        <v-col class="boton">
 
                             <v-btn class="mr-4" color="primary" @click="modificarItems()">
                                 modificar items
@@ -157,9 +157,15 @@ form {
     margin: 10px;
 }
 
+div.boton {
+    
+    margin-top: 18px;
+
+}
+
 .fila {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-items: space-around;
     padding: 10px;
 }
