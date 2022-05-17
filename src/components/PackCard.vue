@@ -60,8 +60,6 @@
 
 
 <style>
-
-
 #price {
   display: flex;
   color: rgb(1, 8, 24);
@@ -88,7 +86,7 @@ export default {
   }),
   props: ['objeto', 'inventarioItems'],
   methods: {
-    
+
     async inventarioPacks() { // TODO: Esto hay que refactorizarlo ya que es codigo repetido -> Hay que cogerlo del padre
       try {
         const packs = await axios.get(`http://${this.serverip}/packs`);
@@ -97,29 +95,30 @@ export default {
       catch (e) {
         console.log(e);
       }
-    }
-  },
-  borrarPack(pack) {
-    fetch(`http://${this.serverip}/packs/${pack.nombre}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Response OK Status:", response.status);
-          console.log("Item borrado:", response.statusText);
-          this.inventarioPacks();
-        } else {
-          console.log("Response Status:", response.status);
-          console.log("Reponse statuts text:", response.statusText);
+    },
+    borrarPack(pack) {
+      fetch(`http://${this.serverip}/packs/${pack.nombre}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
         }
       })
-      .catch((error) => {
-        console.log(error.message);
-      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Response OK Status:", response.status);
+            console.log("Item borrado:", response.statusText);
+            this.inventarioPacks();
+          } else {
+            console.log("Response Status:", response.status);
+            console.log("Reponse statuts text:", response.statusText);
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        })
+    },
   },
+
 
 
 
