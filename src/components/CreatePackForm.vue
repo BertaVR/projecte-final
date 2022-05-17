@@ -102,7 +102,7 @@ export default {
         añadirPack() {
             let data = {
                 nombre: this.nombre,
-                items: this.items,
+                items: this.itemsEnElPack,
             };
             fetch(`http://${this.serverip}/packs/add`, {
                 method: "POST",
