@@ -116,8 +116,6 @@ export default {
         },
         modificarNombre() {
             let self = this;
-
-
             fetch(`http://${this.serverip}/packs/${self.objeto.nombre}/cambiarNombre/${this.nombre}`, {
                 method: 'PUT',
                 headers: {
@@ -140,7 +138,37 @@ export default {
                     console.log(error.message);
                 });
         },
-       
+
+        modificarItems() {
+            let self = this;
+            let data= {items: this.itemsEnElPack}
+
+            fetch(`http://${this.serverip}/packs/${self.objeto.nombre}/updateItems/`, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("Response OK Status:", response.status);
+                        console.log("Reponse OK status text:", response.statusText);
+                        self.objeto.nombre = this.nombre //esta línea hace que puedas editar varias veces
+
+                    } else {
+                        console.log("Response Status:", response.status);
+                        console.log("Reponse statuts text:", response.statusText);
+
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        },
+
+
     },
     components: { ModalCreatePack }
 }
@@ -158,7 +186,7 @@ form {
 }
 
 div.boton {
-    
+
     margin-top: 18px;
 
 }
