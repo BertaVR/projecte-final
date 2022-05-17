@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import PacksScreen from "../views/PacksScreen.vue";
+import Login from "../views/Login.vue"
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  }
 ];
 
 const router = new VueRouter({
