@@ -18,8 +18,8 @@ const vuetify = new Vuetify({
       light: {
         primary: '#8E44AD',
         secondary: '#b0bec5',
-        warning: '#F1C40F',
-        error: '#E74C3C',
+        warning: '#8f8fff',
+        error: '#f05666',
         accent:  '#511863',
       },
     },
