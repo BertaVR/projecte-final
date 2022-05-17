@@ -18,3 +18,5 @@
 ## Desplegament
 ## Resultats i conclusions
 ## Bibliografia i webgrafia
+Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+
