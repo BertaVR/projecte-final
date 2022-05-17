@@ -5,36 +5,54 @@
                 Editar
             </v-btn>
         </template>
-        <v-card  height="550px">
-            <v-card-title>
-                <span class="text-h5">Editar {{ objeto.nombre }}</span>
-            </v-card-title>
+        <v-card height="550px">
+            <div class="top">
+                <v-card-title>
+                    <span class="text-h5">Editar {{ objeto.nombre }}</span>
+                </v-card-title>
+                <v-btn color="blue darken-1" text @click="dialog = false" id="cerrar">
+                    Cerrar
+                </v-btn>
+            </div>
             <v-card-text>
                 <v-container>
-                    <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40"
-                        label="Nombre" required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()">{{ objeto.nombre
-                        }}
-                    </v-text-field>
+                    <v-row class="fila">
+                        <v-col>
+                            <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40"
+                                label="Nombre" required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()">{{
+                                        objeto.nombre
+                                }}
+                            </v-text-field>
+                        </v-col>
+                        <v-col>
+
+                            <v-btn class="mr-4" color="primary" @click="modificarNombre()">
+                                modificar nombre
+                            </v-btn>
+                        </v-col>
+
+                    </v-row>
                     <br>
-                    <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores" required
-                        @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items" dense chips
-                        label="Items" multiple></v-autocomplete>
-                    <v-btn class="mr-4" color="primary" @click="modificarPack()">
-                        modificar pack
-                    </v-btn>
-                    <v-btn color="warning" @click="clear">
-                        reset
-                    </v-btn>
+                    <v-row class="fila">
+                        <v-col>
+
+                            <v-autocomplete v-model="itemsEnElPack" ref="itemsEnElPack" :error-messages="itemsErrores"
+                                required @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()"
+                                :items="items" dense chips label="Items" multiple></v-autocomplete>
+                        </v-col>
+                        <v-col>
+
+                            <v-btn class="mr-4" color="primary" @click="modificarItems()">
+                                modificar items
+                            </v-btn>
+                        </v-col>
+                    </v-row>
                 </v-container>
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="dialog = false">
-                    Close
-                </v-btn>
-                <v-btn color="blue darken-1" text @click="dialog = false">
-                    Save
-                </v-btn>
+
+
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -68,7 +86,7 @@ export default {
         items: [],
     }),
     props: ['objeto'],
-    mounted() { this.getNombresItems(); },
+    //mounted() { this.getNombresItems(); }, //evitar que llame a todos
     computed: {
         nombreErrores() {
             const errors = [];
@@ -95,6 +113,32 @@ export default {
         clear() {
             this.$v.$reset();
             this.nombre = "";
+        },
+        modificarNombre() {
+            let self = this;
+
+
+            fetch(`http://${this.serverip}/packs/${self.objeto.nombre}/cambiarNombre/${this.nombre}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("Response OK Status:", response.status);
+                        console.log("Reponse OK status text:", response.statusText);
+                        self.objeto.nombre = this.nombre //esta línea hace que puedas editar varias veces
+
+                    } else {
+                        console.log("Response Status:", response.status);
+                        console.log("Reponse statuts text:", response.statusText);
+
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
         },
         getNombresItems() {
             var miHeaders = new Headers();
@@ -135,5 +179,19 @@ export default {
 <style>
 form {
     margin: 10%
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    justify-items: space-around;
+    padding: 10px;
 }
 </style>
