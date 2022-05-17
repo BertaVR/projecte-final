@@ -8,13 +8,12 @@
                 @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items" dense chips
                 label="Items" multiple></v-autocomplete>
 
-            <v-btn class="mr-4" @click="añadirPack()">
+            <v-btn class="mr-4" color="primary" @click="añadirPack()">
                 añadir pack
             </v-btn>
-            <v-btn @click="clear">
+            <v-btn color="warning" @click="clear">
                 reset
             </v-btn>
-            <v-btn @click="Document.getElementById('my-modal').show()"> Prueba </v-btn>
             <p v-if="errors.length">{{ errors[0] }}</p>
 
         </form>
@@ -117,7 +116,7 @@ export default {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
                         // this.$refs['itemsEnElPack'].reset();
-
+                       // this.itemsEnElPack = []
                         this.$refs['addPackForm'].reset();
 
                     }
