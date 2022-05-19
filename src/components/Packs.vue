@@ -1,10 +1,9 @@
 <template>
     <div class="pantalla-de-packs">
-        <div class="filtros">  
-        <v-flex xs4>
-          <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="buscarNombre">
+        <div class="filtros">
+            <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
             </v-text-field>
-        </v-flex>
+            <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
         </div>
         <div class="packs">
 
@@ -16,33 +15,40 @@
 </template>
 <script>
 
-import axios from 'axios'
-import PackCard from './PackCard.vue'
+import axios from 'axios';
+import PackCard from './PackCard.vue';
 export default {
     data() {
         return {
             serverip: "127.0.0.1:3000",
+            calidades: ['Basic', 'Standard', 'Premium'],
             packs: [],
             inventarioItems: [],
             queryFiltro: {
-
+                queryCalidad: [],
                 queryNombre: "",
             },
         };
     },
-    mounted() { this.inventarioPacks(); this.getNombresItems() },
-      computed: {
-    resultadosFiltrados() {
-      return this.filtroPacks(this.packs, this.queryFiltro);
-    }
-  },
+    mounted() { this.inventarioPacks(); this.getNombresItems(); },
+    computed: {
+        resultadosFiltrados() {
+            return this.filtroPacks(this.packs, this.queryFiltro);
+        }
+    },
     methods: {
         filtroPacks(arr, query) {
-      return arr.filter(function(pack) {
-        let filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
-        return (filtradoPorNombre);
-      })},
-        buscarNombre(val) {
+            return arr.filter(function (pack) {
+                let filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
+                const filtradoPorCalidad = (query.queryCalidad.length) ? query.queryCalidad.map(x => x.toLowerCase()).includes(pack.calidad.toLowerCase()) : true
+                return (filtradoPorNombre && filtradoPorCalidad);
+            })
+        },
+        filtrarCalidad(val) {
+            this.queryFiltro.queryCalidad = val
+            console.log(val)
+        },
+        filtrarNombre(val) {
             this.queryFiltro.queryNombre = val;
         },
         async inventarioPacks() {
@@ -101,5 +107,6 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.filtros{margin:50px}
+
+.filtros {}
 </style>
