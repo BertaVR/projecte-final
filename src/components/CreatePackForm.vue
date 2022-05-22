@@ -67,6 +67,7 @@ export default {
         clear() {
             this.$v.$reset();
             this.nombre = "";
+            this.itemsEnElPack=[]
         },
         getNombresItems() {
             var miHeaders = new Headers();
