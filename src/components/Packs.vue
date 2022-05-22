@@ -1,6 +1,12 @@
 <template>
     <div class="pantalla-de-packs">
-        <div class="filtros">
+        <template>
+  <v-expansion-panels focusable>
+    <v-expansion-panel
+    >
+      <v-expansion-panel-header>Filtrar</v-expansion-panel-header>
+      <v-expansion-panel-content>
+                  <div class="filtros">
             <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
             </v-text-field>
             <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
@@ -10,6 +16,11 @@
                 v-model="queryFiltro.queryRangoPrecio" :max="precioMax" :min="precioMin" @change="filtrarPrecio"
                 @click="hacerThumbLabelVisible()" :thumb-label="thumbVisible"></v-range-slider>
         </div>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</template>
+
         <div class="packs">
 
             <div v-for="pack in this.resultadosFiltrados" :key="pack.nombre">
