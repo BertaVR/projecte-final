@@ -4,6 +4,8 @@
             <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
             </v-text-field>
             <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
+            <v-autocomplete ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems" dense chips
+                label="Items" multiple></v-autocomplete>
         </div>
         <div class="packs">
 
@@ -25,6 +27,7 @@ export default {
             packs: [],
             inventarioItems: [],
             queryFiltro: {
+                queryContieneItems: [],
                 queryCalidad: [],
                 queryNombre: "",
             },
@@ -34,19 +37,26 @@ export default {
     computed: {
         resultadosFiltrados() {
             return this.filtroPacks(this.packs, this.queryFiltro);
-        }
+        }, a() { console.log(this.filtroPacks(this.packs, this.queryFiltro)) }
     },
     methods: {
-        filtroPacks(arr, query) {
-            return arr.filter(function (pack) {
+        filtroPacks(packs, query) {
+
+            return packs.filter(function (pack) {
                 let filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
-                const filtradoPorCalidad = (query.queryCalidad.length) ? query.queryCalidad.map(x => x.toLowerCase()).includes(pack.calidad.toLowerCase()) : true
-                return (filtradoPorNombre && filtradoPorCalidad);
+                console.log(query.queryContieneItems)
+                const filtradoPorItems = query.queryContieneItems.every((i) => pack.items.map(i => i.nombre).includes(i))
+                const filtradoPorCalidad = (query.queryCalidad.length) ? query.queryCalidad.map(x => x.toLowerCase()).includes(pack.calidad.toLowerCase()) : true;
+                return (filtradoPorItems);
+
             })
+        },
+
+        filtrarContieneItems(val) {
+            this.queryFiltro.queryContieneItems = val
         },
         filtrarCalidad(val) {
             this.queryFiltro.queryCalidad = val
-            console.log(val)
         },
         filtrarNombre(val) {
             this.queryFiltro.queryNombre = val;
