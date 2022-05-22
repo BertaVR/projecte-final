@@ -4,8 +4,11 @@
             <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
             </v-text-field>
             <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
-            <v-autocomplete ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems" dense chips
-                label="Items" multiple></v-autocomplete>
+            <v-autocomplete class="auto" ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems" dense
+                chips label="Items" multiple></v-autocomplete>
+            <v-range-slider class="precio" ref="precio" label="Precio" persistent-hint hint="Seleccione un rango"
+                v-model="rangoPrecio" :max="precioMax" :min="precioMin" @click="hacerThumbLabelVisible()"
+                :thumb-label="thumbVisible"></v-range-slider>
         </div>
         <div class="packs">
 
@@ -25,7 +28,11 @@ export default {
             serverip: "127.0.0.1:3000",
             calidades: ['Basic', 'Standard', 'Premium'],
             packs: [],
+            precioMax: 300,
+            precioMin: 3,
+            thumbVisible: 'true',
             inventarioItems: [],
+            rangoPrecio: [0, 99999],
             queryFiltro: {
                 queryContieneItems: [],
                 queryCalidad: [],
@@ -37,17 +44,32 @@ export default {
     computed: {
         resultadosFiltrados() {
             return this.filtroPacks(this.packs, this.queryFiltro);
-        }, a() { console.log(this.filtroPacks(this.packs, this.queryFiltro)) }
+        },
     },
     methods: {
+        hacerThumbLabelVisible() {
+            this.thumbVisible = 'always';
+
+        },
+        getPrecioMax() {
+            let setDePrecios = new Set(this.packs.map(x => Math.round(x.precio)));
+            this.precioMax = Math.max(...setDePrecios)
+            this.rangoPrecio[1] = this.precioMax
+
+        },
+        getPrecioMin() {
+            let setDePrecios = new Set(this.packs.map(x => Math.round(x.precio)));
+            this.precioMin = Math.min(...setDePrecios)
+            this.rangoPrecio[0] = this.precioMin
+
+        },
         filtroPacks(packs, query) {
 
             return packs.filter(function (pack) {
                 let filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
-                console.log(query.queryContieneItems)
                 const filtradoPorItems = query.queryContieneItems.every((i) => pack.items.map(i => i.nombre).includes(i))
                 const filtradoPorCalidad = (query.queryCalidad.length) ? query.queryCalidad.map(x => x.toLowerCase()).includes(pack.calidad.toLowerCase()) : true;
-                return (filtradoPorItems);
+                return (filtradoPorItems && filtradoPorNombre && filtradoPorCalidad);
 
             })
         },
@@ -65,6 +87,9 @@ export default {
             try {
                 const packs = await axios.get(`http://${this.serverip}/packs`);
                 this.packs = packs.data;
+                this.getPrecioMax();
+                this.getPrecioMin();
+
             }
             catch (e) {
                 console.log(e);
@@ -118,5 +143,11 @@ export default {
     justify-content: space-around;
 }
 
-.filtros {}
+.filtros .auto {
+    margin-top: 0px;
+}
+
+.precio {
+    margin-top: 20px;
+}
 </style>
