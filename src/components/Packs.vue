@@ -7,8 +7,8 @@
             <v-autocomplete class="auto" ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems" dense
                 chips label="Items" multiple></v-autocomplete>
             <v-range-slider class="precio" ref="precio" label="Precio" persistent-hint hint="Seleccione un rango"
-                v-model="rangoPrecio" :max="precioMax" :min="precioMin" @click="hacerThumbLabelVisible()"
-                :thumb-label="thumbVisible"></v-range-slider>
+                v-model="queryFiltro.queryRangoPrecio" :max="precioMax" :min="precioMin" @change="filtrarPrecio"
+                @click="hacerThumbLabelVisible()" :thumb-label="thumbVisible"></v-range-slider>
         </div>
         <div class="packs">
 
@@ -28,15 +28,16 @@ export default {
             serverip: "127.0.0.1:3000",
             calidades: ['Basic', 'Standard', 'Premium'],
             packs: [],
-            precioMax: 300,
-            precioMin: 3,
-            thumbVisible: 'true',
+            precioMax: 99999,
+            precioMin: 1,
+            thumbVisible: true,
             inventarioItems: [],
-            rangoPrecio: [0, 99999],
             queryFiltro: {
                 queryContieneItems: [],
                 queryCalidad: [],
                 queryNombre: "",
+                queryRangoPrecio: [0, 99999],
+
             },
         };
     },
@@ -53,23 +54,25 @@ export default {
         },
         getPrecioMax() {
             let setDePrecios = new Set(this.packs.map(x => Math.round(x.precio)));
-            this.precioMax = Math.max(...setDePrecios)
-            this.rangoPrecio[1] = this.precioMax
+            this.precioMax = Math.max(...setDePrecios) + 1
+            this.queryFiltro.queryRangoPrecio[1] = this.precioMax
 
         },
         getPrecioMin() {
             let setDePrecios = new Set(this.packs.map(x => Math.round(x.precio)));
-            this.precioMin = Math.min(...setDePrecios)
-            this.rangoPrecio[0] = this.precioMin
+            this.precioMin = Math.min(...setDePrecios) - 1
+            this.queryFiltro.queryRangoPrecio[0] = this.precioMin
 
         },
         filtroPacks(packs, query) {
 
             return packs.filter(function (pack) {
-                let filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
+                const filtradoPorNombre = pack.nombre.toLowerCase().includes(query.queryNombre.toLowerCase());
                 const filtradoPorItems = query.queryContieneItems.every((i) => pack.items.map(i => i.nombre).includes(i))
                 const filtradoPorCalidad = (query.queryCalidad.length) ? query.queryCalidad.map(x => x.toLowerCase()).includes(pack.calidad.toLowerCase()) : true;
-                return (filtradoPorItems && filtradoPorNombre && filtradoPorCalidad);
+                const filtradoPrecioMin = pack.precio >= (query.queryRangoPrecio[0])
+                const filtradoPrecioMax = pack.precio <= (query.queryRangoPrecio[1])
+                return (filtradoPorItems && filtradoPorNombre && filtradoPorCalidad && filtradoPrecioMin && filtradoPrecioMax);
 
             })
         },
@@ -79,6 +82,10 @@ export default {
         },
         filtrarCalidad(val) {
             this.queryFiltro.queryCalidad = val
+        },
+        filtrarPrecio(val) {
+            this.queryFiltro.queryRangoPrecio = val
+
         },
         filtrarNombre(val) {
             this.queryFiltro.queryNombre = val;
@@ -148,6 +155,6 @@ export default {
 }
 
 .precio {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 </style>
