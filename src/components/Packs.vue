@@ -1,25 +1,28 @@
 <template>
     <div class="pantalla-de-packs">
-        <template>
-  <v-expansion-panels focusable>
-    <v-expansion-panel
-    >
-      <v-expansion-panel-header>Filtrar</v-expansion-panel-header>
-      <v-expansion-panel-content>
-                  <div class="filtros">
-            <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
-            </v-text-field>
-            <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
-            <v-autocomplete class="auto" ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems" dense
-                chips label="Items" multiple></v-autocomplete>
-            <v-range-slider class="precio" ref="precio" label="Precio" persistent-hint hint="Seleccione un rango"
-                v-model="queryFiltro.queryRangoPrecio" :max="precioMax" :min="precioMin" @change="filtrarPrecio"
-                @click="hacerThumbLabelVisible()" :thumb-label="thumbVisible"></v-range-slider>
-        </div>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
-</template>
+
+<v-btn class="tituloFiltros"         color=" accent"
+     
+ @click="expand = !expand">
+        <div >Filtrar</div>
+        <v-btn icon >
+            <v-icon>{{ expand ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+        </v-btn>
+        </v-btn>
+        <v-expand-transition class="filtros">
+            <div class="filtros" v-show="expand">
+                <v-text-field append-icon="search" label="Nombre" single-line hide-details @change="filtrarNombre">
+                </v-text-field>
+                <v-select multiple chips @change="filtrarCalidad" :items="this.calidades" label="Calidad"></v-select>
+                <v-autocomplete class="auto" ref="filtroItems" @change="filtrarContieneItems" :items="inventarioItems"
+                    dense chips label="Items" multiple></v-autocomplete>
+                <v-range-slider class="precio" ref="precio" label="Precio" persistent-hint hint="Seleccione un rango"
+                    v-model="queryFiltro.queryRangoPrecio" :max="precioMax" :min="precioMin" @change="filtrarPrecio"
+                    @click="hacerThumbLabelVisible()" :thumb-label="thumbVisible"></v-range-slider>
+            </div>
+        </v-expand-transition>
+
+
 
         <div class="packs">
 
@@ -36,6 +39,7 @@ import PackCard from './PackCard.vue';
 export default {
     data() {
         return {
+            expand: false,
             serverip: "127.0.0.1:3000",
             calidades: ['Basic', 'Standard', 'Premium'],
             packs: [],
@@ -159,6 +163,21 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.filtros {
+    padding-left: 40px;
+    padding-right: 40px
+}
+
+.tituloFiltros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 45px;
+max-width: 120px;
+
+
 }
 
 .filtros .auto {
