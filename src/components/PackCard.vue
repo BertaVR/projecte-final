@@ -73,6 +73,7 @@
 </style>
 <script>
 import EditPackForm from "./EditPackForm.vue";
+import axios  from "axios";
 
 export default {
   components: { EditPackForm },
@@ -84,6 +85,7 @@ export default {
 
 
   }),
+  
   props: ['objeto', 'inventarioItems'],
   methods: {
 
