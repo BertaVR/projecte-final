@@ -62,7 +62,6 @@
 import { objectToString } from '@vue/shared';
 import { validationMixin } from 'vuelidate'
 import { required, minLength, decimal, maxLength, integer, minValue, maxValue } from 'vuelidate/lib/validators'
-import ModalCreatePack from './ModalCreatePack.vue'
 
 export default {
     mixins: [validationMixin],
@@ -170,7 +169,6 @@ export default {
 
 
     },
-    components: { ModalCreatePack }
 }
 </script>
 <style>
