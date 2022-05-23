@@ -31,6 +31,7 @@
 
       <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
 
+
     </v-card-actions>
 
     <v-card-actions>
@@ -41,6 +42,7 @@
       <v-btn icon @click="show = !show">
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
+
     </v-card-actions>
 
     <v-expand-transition>
@@ -49,7 +51,7 @@
 
         <v-card-text>
           <div id="items" v-for="item in objeto.items">
-            <div>{{ item.nombre }}</div>
+            <GetItem :item="item"></GetItem>
           </div>
         </v-card-text>
       </div>
@@ -70,13 +72,18 @@
   font-weight: 500;
 
 }
+
+#items div{
+ padding-top: 5px;
+}
 </style>
 <script>
 import EditPackForm from "./EditPackForm.vue";
-import axios  from "axios";
+import axios from "axios";
+import GetItem from "./GetItem.vue";
 
 export default {
-  components: { EditPackForm },
+  components: { EditPackForm, GetItem },
   data: () => ({
 
     serverip: "127.0.0.1:3000",
@@ -85,7 +92,7 @@ export default {
 
 
   }),
-  
+
   props: ['objeto', 'inventarioItems'],
   methods: {
 
