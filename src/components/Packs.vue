@@ -3,6 +3,7 @@
 
 <v-btn class="tituloFiltros"         color=" accent"
      
+     
  @click="expand = !expand">
         <div >Filtrar</div>
         <v-btn icon >

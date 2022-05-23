@@ -31,7 +31,7 @@
 
       <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
 
-
+<BotonAñadirACarrito :objeto="objeto"></BotonAñadirACarrito>
     </v-card-actions>
 
     <v-card-actions>
@@ -52,6 +52,7 @@
         <v-card-text>
           <div id="items" v-for="item in objeto.items">
             <GetItem :item="item"></GetItem>
+
           </div>
         </v-card-text>
       </div>
@@ -73,17 +74,22 @@
 
 }
 
-#items div{
- padding-top: 5px;
+#items div {
+  padding-top: 5px;
 }
+
+
+
 </style>
 <script>
 import EditPackForm from "./EditPackForm.vue";
 import axios from "axios";
 import GetItem from "./GetItem.vue";
+import Carrito from "./Carrito.vue";
+import BotonAñadirACarrito from "./BotonAñadirACarrito.vue";
 
 export default {
-  components: { EditPackForm, GetItem },
+  components: { EditPackForm, GetItem, Carrito, BotonAñadirACarrito },
   data: () => ({
 
     serverip: "127.0.0.1:3000",
