@@ -11,10 +11,10 @@
                     <v-list-item-group>
                         <v-list-item v-for="(item, i) in compra" :key="i">
                             <v-list-item-content>
-                                ̣{{ item.nombre }}
+                                {{ item.cantidadEnCarro }}x ̣{{ item.nombre }}
                             </v-list-item-content>
                             <v-list-item-content>
-                                <v-list-item-title v-text="item.precio"></v-list-item-title>
+                                {{item.precio *item.cantidadEnCarro}}
                             </v-list-item-content>
                         </v-list-item>
                     </v-list-item-group>

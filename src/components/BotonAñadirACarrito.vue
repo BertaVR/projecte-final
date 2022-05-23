@@ -41,9 +41,14 @@ export default {
         añadirAlCarro(pack) {
 
             this.snackbar = true
-
             this.recuperarPacksPrevios()
-            this.packsEnCarro.push(pack)
+            if (this.packsEnCarro.find(element => element._id == pack._id)) {
+                (this.packsEnCarro.find(element => element._id == pack._id)).cantidadEnCarro += 1
+            }
+            if (!this.packsEnCarro.find(element => element._id == pack._id)) {
+                pack.cantidadEnCarro = 1; this.packsEnCarro.push(pack)
+            }
+
             localStorage.setItem("packsEnCarro", JSON.stringify(this.packsEnCarro));
         },
 
