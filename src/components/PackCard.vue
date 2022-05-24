@@ -25,13 +25,13 @@
       <div id="stock">Stock: {{ objeto.stock }}</div>
 
     </v-card-text>
-    <v-card-actions class="botones">
+    <v-card-actions class="botonesPack">
 
       <EditPackForm :inventarioItems=inventarioItems :objeto=objeto></EditPackForm>
 
       <v-btn color="error" elevation="2" @click="borrarPack(objeto)">Borrar</v-btn>
 
-<BotonAñadirACarrito :objeto="objeto"></BotonAñadirACarrito>
+      <BotonAñadirACarrito :objeto="objeto"></BotonAñadirACarrito>
     </v-card-actions>
 
     <v-card-actions>
@@ -78,8 +78,15 @@
   padding-top: 5px;
 }
 
+.botonesPack {
+  display: flex;
+  justify-content:space-evenly;
+  
+}
 
-
+.botonesPack div {
+  justify-self: flex-end;
+}
 </style>
 <script>
 import EditPackForm from "./EditPackForm.vue";
