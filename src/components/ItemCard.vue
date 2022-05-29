@@ -26,17 +26,6 @@
       <div id="stock">Stock: {{ objeto.stock }}</div>
     </v-card-text>
 
-
-    <v-card-actions>
-
-      <v-btn color="primary" elevation="2">Editar</v-btn>
-
-
-      <v-btn color="error" elevation="2">Borrar</v-btn>
-
-    </v-card-actions>
-
-
   </v-card>
 </template>
 <script>
