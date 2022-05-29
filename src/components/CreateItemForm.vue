@@ -16,13 +16,20 @@
                     :value="material"></v-radio>
             </v-radio-group>
         </div>
-        <v-btn class="mr-4" @click="addItem()" :disabled="!datosValidos()">
+        <v-btn class="mr-4" color="primary" @click="addItem()" :disabled="$v.$anyError || algunCampoEstaVacio()">
             añadir item
         </v-btn>
-        <v-btn @click="clear">
+        <v-snackbar :color="snackbar.color" top  multiline height="100" font-size="large" v-model="snackbar.show">
+            <template v-slot:action="{ attrs }">
+            {{snackbar.message}}
+                <v-btn text v-bind="attrs" @click="snackbar.show = false">
+                    Cerrar
+                </v-btn>
+            </template>
+        </v-snackbar>
+        <v-btn class="mr-4" color="warning" @click="clear">
             reset
         </v-btn>
-          <p v-if="errors.length">{{errors[0]}}</p>
 
     </form>
 </template>
@@ -44,6 +51,11 @@ export default {
     },
 
     data: () => ({
+        snackbar: {
+            show: false,
+            message: null,
+            color: null
+        },
         nombre: '',
         precio: '',
         calidad: '',
@@ -113,6 +125,11 @@ export default {
     },
 
     methods: {
+
+        algunCampoEstaVacio() {
+            return !this.nombre || !this.precio || !this.calidad || !this.stock || !this.demanda || !this.material
+        },
+
         submit() {
             this.$v.$touch()
         },
@@ -123,12 +140,14 @@ export default {
             this.calidad = ''
             this.demanda = ''
             this.material = 'normal'
+            this.stock = ''
             this.demanda = ''
 
         },
         capitalizar(p) {
             return p.charAt(0).toUpperCase() + p.slice(1)
         },
+        gestionErroresMessage(statusCode) {if (statusCode==409){return "Ya hay un item con ese nombre"} }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
         addItem() {
 
 
@@ -155,10 +174,19 @@ export default {
                     if (response.ok) {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
+                        this.snackbar = {
+                            message: ` Item ${this.nombre} añadido con éxito`,
+                            color: 'success',
+                            show: true
+                        }
                     } else {
                         console.log("Response Status:", response.status);
-                        console.log("Reponse statuts text:", response.statusText);   
-
+                        console.log("Reponse statuts text:", response.statusText);
+                        this.snackbar = {
+                            message: this.gestionErroresMessage(response.status),
+                            color: 'error',
+                            show: true
+                        }
 
 
                     }
@@ -167,11 +195,12 @@ export default {
                     console.log(error.message);
                 });
         },
-        datosValidos(){return !this.errors}
 
     },
 }
 </script>
 <style>
-form{margin: 10%}
+form {
+    margin: 10%
+}
 </style>
