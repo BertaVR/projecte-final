@@ -85,7 +85,7 @@ export default {
             if (!this.$v.precio.$dirty) return errors
             !this.$v.precio.decimal && errors.push('El campo precio tiene que ser un número entero o decimal.')
             !this.$v.precio.required && errors.push('Es necesario colocar un precio.')
-            !this.$v.calidad.minValue && errors.push('El precio no puede ser menor a 0.')
+            !this.$v.precio.minValue && errors.push('El precio no puede ser menor a 0.')
 
 
             return errors
