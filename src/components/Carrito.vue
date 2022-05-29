@@ -27,7 +27,7 @@
                             {{ (item.precio * item.cantidadEnCarro).toFixed(2) }}{{ currency }}
                         </v-list-item-content>
                         <div class="quantity">
-                            <v-icon id="menos" large color="primary" @click="disminuirCantidad(item)">
+                            <v-icon id="menos" large color="primary" @click="disminuirCantidad(item)" >
                                 mdi-minus-circle
                             </v-icon>
                             <v-icon id="mas" large color="primary" @click="aumentarCantidad(item)">
@@ -65,7 +65,8 @@
 
                     <div class="botones">
 
-                        <v-btn color="error" @click="vaciarCarro()">
+                        <v-btn color="error" @click="vaciarCarro()"   :disabled="this.compra.length<1 ? '' : disabled"
+>
                             Vaciar el carrito
                         </v-btn>
 
