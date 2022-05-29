@@ -70,7 +70,7 @@
                             Vaciar el carrito
                         </v-btn>
 
-                        <v-btn color="primary" @click="dialog = false">
+                        <v-btn color="primary" @click="dialog = false"  :disabled="this.compra.length<1 ? '' : disabled">
                             Ir al checkout
                         </v-btn>
                     </div>
