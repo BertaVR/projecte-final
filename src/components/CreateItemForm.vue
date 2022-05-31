@@ -1,37 +1,41 @@
 <template>
-    <form>
-        <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
-            required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
-        <v-text-field v-model="precio" ref="precio" :error-messages="precioErrores" label="Precio" type="number"
-            required @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
-        <v-text-field v-model="calidad" ref="calidad" :error-messages="calidadErrores" label="Calidad" type="number"
-            required @input="$v.calidad.$touch()" @blur="$v.calidad.$touch()"></v-text-field>
-        <v-text-field v-model="demanda" ref="demanda" :error-messages="demandaErrores" label="Demanda" type="number"
-            required @input="$v.demanda.$touch()" @blur="$v.demanda.$touch()"></v-text-field>
-        <v-text-field v-model="stock" ref="stock" :error-messages="stockErrores" label="Stock" type="number" required
-            @input="$v.stock.$touch()" @blur="$v.stock.$touch()"></v-text-field>
-        <div>Selecciona un tipo de material:
-            <v-radio-group v-model="material" ref="material" row>
-                <v-radio v-for="material in materiales" :key="material" :label="capitalizar(material)"
-                    :value="material"></v-radio>
-            </v-radio-group>
-        </div>
-        <v-btn class="mr-4" color="primary" @click="addItem()" :disabled="$v.$anyError || algunCampoEstaVacio()">
-            añadir item
-        </v-btn>
-        <v-snackbar :color="snackbar.color" top  multiline height="100" font-size="large" v-model="snackbar.show">
+    <div clasS="createItem">
+
+        <form>
+            <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40" label="Nombre"
+                required @input="$v.nombre.$touch()" @blur="$v.nombre.$touch()"></v-text-field>
+            <v-text-field v-model="precio" ref="precio" :error-messages="precioErrores" label="Precio" type="number"
+                required @input="$v.precio.$touch()" @blur="$v.precio.$touch()"></v-text-field>
+            <v-text-field v-model="calidad" ref="calidad" :error-messages="calidadErrores" label="Calidad" type="number"
+                required @input="$v.calidad.$touch()" @blur="$v.calidad.$touch()"></v-text-field>
+            <v-text-field v-model="demanda" ref="demanda" :error-messages="demandaErrores" label="Demanda" type="number"
+                required @input="$v.demanda.$touch()" @blur="$v.demanda.$touch()"></v-text-field>
+            <v-text-field v-model="stock" ref="stock" :error-messages="stockErrores" label="Stock" type="number"
+                required @input="$v.stock.$touch()" @blur="$v.stock.$touch()"></v-text-field>
+            <div>Selecciona un tipo de material:
+                <v-radio-group v-model="material" ref="material" row>
+                    <v-radio v-for="material in materiales" :key="material" :label="capitalizar(material)"
+                        :value="material"></v-radio>
+                </v-radio-group>
+            </div>
+            <v-btn class="mr-4" color="primary" @click="addItem()" :disabled="$v.$anyError || algunCampoEstaVacio()">
+                añadir item
+            </v-btn>
+
+            <v-btn class="mr-4" color="warning" @click="clear">
+                reset
+            </v-btn>
+
+        </form>
+        <v-snackbar :color="snackbar.color" top multiline height="100" font-size="large" v-model="snackbar.show">
             <template v-slot:action="{ attrs }">
-            {{snackbar.message}}
+                {{ snackbar.message }}
                 <v-btn text v-bind="attrs" @click="snackbar.show = false">
                     Cerrar
                 </v-btn>
             </template>
         </v-snackbar>
-        <v-btn class="mr-4" color="warning" @click="clear">
-            reset
-        </v-btn>
-
-    </form>
+    </div>
 </template>
 <script>
 import { validationMixin } from 'vuelidate'
@@ -147,7 +151,7 @@ export default {
         capitalizar(p) {
             return p.charAt(0).toUpperCase() + p.slice(1)
         },
-        gestionErroresMessage(statusCode) {if (statusCode==409){return "Ya hay un item con ese nombre"} }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
+        gestionErroresMessage(statusCode) { if (statusCode == 409) { return "Ya hay un item con ese nombre" } }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
         addItem() {
 
 
