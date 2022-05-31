@@ -8,14 +8,23 @@
                 @input="$v.itemsEnElPack.$touch()" @blur="$v.itemsEnElPack.$touch()" :items="items" dense chips
                 label="Items" multiple></v-autocomplete>
 
-            <v-btn class="mr-4" color="primary" @click="añadirPack()">
+            <v-btn class="mr-4" color="primary" @click="añadirPack()" :disabled="$v.$anyError || algunCampoEstaVacio()">
                 añadir pack
             </v-btn>
             <v-btn color="warning" @click="clear">
                 reset
             </v-btn>
 
+
         </form>
+        <v-snackbar :color="snackbar.color" top multiline height="100" font-size="large" v-model="snackbar.show">
+            <template v-slot:action="{ attrs }">
+                {{ snackbar.message }}
+                <v-btn text v-bind="attrs" @click="snackbar.show = false">
+                    Cerrar
+                </v-btn>
+            </template>
+        </v-snackbar>
     </div>
 </template>
 <script>
@@ -30,6 +39,11 @@ export default {
 
     },
     data: () => ({
+        snackbar: {
+            show: false,
+            message: null,
+            color: null
+        },
         nombre: "",
         materiales: ["normal", "consumible", "indestructible"],
         serverip: "127.0.0.1:3000",
@@ -48,23 +62,22 @@ export default {
             !this.$v.nombre.maxLength && errors.push("El nombre no puede tener más de 40 caracteres.");
             return errors;
         },
-        itemsErrores() {
-            const errors = [];
-            if (!this.$v.itemsEnElPack.$dirty)
-                return errors;
-            !this.$v.itemsEnElPack.required && errors.push(`Añada al menos un item`);
 
-            return errors;
-        }
     },
     methods: {
+        gestionErroresMessage(statusCode) { if (statusCode == 409) { return "Ya hay un pack con ese nombre" } }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
+
+        algunCampoEstaVacio() {
+            return !this.nombre || this.itemsEnElPack.length < 1
+        },
+
         submit() {
             this.$v.$touch();
         },
         clear() {
             this.$v.$reset();
             this.nombre = "";
-            this.itemsEnElPack=[]
+            this.itemsEnElPack = []
         },
         getNombresItems() {
             var miHeaders = new Headers();
@@ -85,6 +98,7 @@ export default {
                             let nombres = json.map(item => item.nombre);
                             console.log(nombres);
                             this.items = nombres;
+
                         });
                     }
                     else {
@@ -114,13 +128,24 @@ export default {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
                         // this.$refs['itemsEnElPack'].reset();
-                       // this.itemsEnElPack = []
-                        this.$refs['addPackForm'].reset();
+                        // this.itemsEnElPack = []
+                        this.snackbar = {
+                            message: ` ${data.nombre} añadido con éxito`,
+                            color: 'success',
+                            show: true
+                        }
+                        this.clear()
+
 
                     }
                     else {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);
+                        this.snackbar = {
+                            message: this.gestionErroresMessage(response.status),
+                            color: 'error',
+                            show: true
+                        }
                     }
                 })
                 .catch((error) => {
@@ -128,7 +153,7 @@ export default {
                 });
         }
     },
-    components: {  }
+    components: {}
 }
 </script>
 <style>
