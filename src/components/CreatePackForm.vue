@@ -16,13 +16,11 @@
             </v-btn>
 
         </form>
-        <ModalCreatePack id='my-modal'></ModalCreatePack>
     </div>
 </template>
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, decimal, maxLength, integer, minValue, maxValue } from 'vuelidate/lib/validators'
-import ModalCreatePack from './ModalCreatePack.vue'
 
 export default {
     mixins: [validationMixin],
@@ -130,7 +128,7 @@ export default {
                 });
         }
     },
-    components: { ModalCreatePack }
+    components: {  }
 }
 </script>
 <style>
