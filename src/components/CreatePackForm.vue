@@ -14,7 +14,6 @@
             <v-btn color="warning" @click="clear">
                 reset
             </v-btn>
-            <p v-if="errors.length">{{ errors[0] }}</p>
 
         </form>
         <ModalCreatePack id='my-modal'></ModalCreatePack>
