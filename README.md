@@ -16,7 +16,7 @@
 ### Tecnologies
 - Para el front he usado el framework Vue y Vuetify como librería de maquetación. Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código. Por otra parte Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos.
 - Para el back he usado node y express porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
-- La base de datos es una Mongo -> porque es rápida y flexible.
+- La base de datos es una Mongo -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
 ### Planificació
 ### Anàlisi previ
