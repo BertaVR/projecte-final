@@ -14,8 +14,14 @@
 #### Objetivos personales
 -  Dentro de los objetivos personales está el hecho de poder crear un software de cero por primera vez pudiendo tener una parte front y una parte back. Quería tocar todos los conocimientos aprendidos durante el curso: desarrollo de API rests, maquetación front (y fetch), programación funcional, localStorage... 
 ### Tecnologies
-- Para el front he usado el framework **Vue** y **Vuetify** como librería de maquetación. Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código. Por otra parte Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos. Como librería de validación en el front he usado **Vuelidate**
+#### Front
+- Para el front he usado el framework **Vue**.  Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código.
+- **Vuetify** como librería de maquetación.  Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos, no la había usado nunca y quería aprender a usarla. 
+- HTML y CSS.
+-  Como librería de validación en el front he usado **Vuelidate**
+#### BACK
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
+#### BASE DE DATOS
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
 ### Planificación
