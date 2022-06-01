@@ -14,12 +14,20 @@
 #### Objetivos personales
 -  Dentro de los objetivos personales está el hecho de poder crear un software de cero por primera vez pudiendo tener una parte front y una parte back. Quería tocar todos los conocimientos aprendidos durante el curso: desarrollo de API rests, maquetación front (y fetch), programación funcional, localStorage... 
 ### Tecnologies
-- Para el front he usado el framework Vue y Vuetify como librería de maquetación. Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código. Por otra parte Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos.
-- Para el back he usado node y express porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
-- La base de datos es una Mongo -> porque es rápida y flexible.
+- Para el front he usado el framework **Vue** y **Vuetify** como librería de maquetación. Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código. Por otra parte Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos. Como librería de validación en el front he usado **Vuelidate**
+- Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
+- La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
-### Planificació
-### Anàlisi previ
+### Planificación
+### Análisis previo
+#### Modelo relacional.
+Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica.
+
+Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**) la asociación entre colecciones se da de la siguiente manera:
+- Cada item tiene un id (además de otras propiedades como nommbre, stock, calidad, demanda, precio y material)
+- Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
+    ![Modelo de composición](/docs/img/referencia-items.png)
+
 ### Disseny i implementació
 ### Producció
 ## Desplegament
