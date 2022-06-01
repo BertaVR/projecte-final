@@ -26,7 +26,7 @@ Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de da
 Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**) la asociación entre colecciones se da de la siguiente manera:
 - Cada item tiene un id (además de otras propiedades como nommbre, stock, calidad, demanda, precio y material)
 - Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
-    ![Modelo de composición](/docs/img/referencia-items.png)
+    ![Modelo de composición](/doc/img/referencia-items.png)
 
 ### Disseny i implementació
 ### Producció
