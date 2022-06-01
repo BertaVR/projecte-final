@@ -38,6 +38,11 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 ### Producció
 ## Desplegament
 ## Resultats i conclusions
+Creo que con el tiempo que ha habido para terminar la aplicación he hecho un buen trabajo. Sin embargo, se han quedado puntos pendientes a incluir de cara a una fase 2:
+- Poder añadir la foto al producto.
+- Tal vez podría ser buena idea poder vender, editar y borrar los items (no solo los packs) -> Para ello habrá que migrar la base de datos a una relacional.
+- Poder implementar la pasarela de pego y una compra real.
+- El descuento que se aplica a la suma de los precios de los items al estar en un pack puede hacerse dinámico. Esto es: ahora mismo el descuento es un porcentaje fijo establecido (15%) se me ocurre que de ccara a una fase dos se pueda elegir o modificar el descuento
 ## Bibliografia i webgrafia
 Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
 login -> https://codesandbox.io/s/0q4kvj8n0l
