@@ -1,9 +1,9 @@
 # Projecte-final
 ## Tabla de contenidos
-[datos](#datos)
-[descripcion](#descripcion)
-[objetivos](#objetivos)
-[tecnologias](#tecnologias)
+[Datos](#datos)  
+[Descripcion](#descripcion)  
+[Objetivos](#objetivos)  
+[Tecnologías](#tecnologias)  
 
 
 ## Introducción
