@@ -8,6 +8,10 @@
 - **Link del Despliegue**:
 - **Link del Proyecto**: 
 ### Descripción
+Finalmente, acabado el análisis, se trata de una aplicación de venta de Packs. Los packs están compuestos de items. Los items pueden pertenecer a uno o varios packs y los packs pueden contener uno o varios items.Los items tienen ciertas propiedades (un stock, un nombre, un precio, una calidad y un material). Los packs tienen otras características (poner características). La gracia de la aplicación es que al crear un nuevo pack para sacarlo al mercado, no hace falta calcular el precio, el stock, ni la calidad. Estas propiedades se calculan solas en función de los items, el algoritmo es el siguiente:
+- El stock del pack será igual al menor stock de sus items. Esto es: si tienes un pack compuesto por un item A con un stock de 4 unidades y un item B con un stock de 20 unidades, el stock del pack será de 4 (ya que cuando se termine el objeto A ya no se podrá vender más el pack.
+- El precio es la suma de los precios de los items más un porcentaje de descuento (15%) por el hecho de pertenecer a un pack.
+- La calidad se calcula de la siguiente manera: los packs de menos de 3 items son basic, de 3 a 4 son standard y de más de 4 son premium (revisar esto, Berta, porfa)
 ### Objetivos
 #### Objetivos de Software
 - Este software pretende satisfacer la necesidad de una tienda online: Por una parte poder crear, modificar, ver y borrar ciertos elementos de una tienda (parte de gestión). Además, se trata de una aplicación en la cual a partir de items puedes crear packs, los cuales están a la venta. Las características de los packs se calculan (en el backend) en función de ciertas reglas de negocio, de manera que al crear o editar un pack no es necesario pensar en qué precio ponerle o qué stock queda, basta con añadir los items y hay una lógica por detrás que te genera los packs. Por otra parte poder comprar objetos y añadirlos a un carrito pudiendo calcular el precio final. Uno de los objetivos es hacer un software lo más usable y visualmente atractivo posible.
