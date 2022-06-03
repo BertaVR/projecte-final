@@ -1,7 +1,14 @@
 # Projecte-final
+## Tabla de contenidos
+[datos](#datos)
+[descripcion](#descripcion)
+[objetivos](#objetivos)
+[tecnologias](#tecnologias)
+
+
 ## Introducción
 ### Datos
-- **Títulp del proyecto**: Tienda
+- **Título del proyecto**: Tienda
 - **Datos de los Autores**: Berta Vergés Rodríguez
 - **Ciclo Formativo**: Desarrollo de aplicaciones web
 - **Fecha de entrega**: 8 de junio de 2022
@@ -19,7 +26,7 @@ He implementado la posibilidad de crear items, crear packs (seleccionando items 
 - Este software pretende satisfacer la necesidad de una tienda online: Por una parte poder crear, modificar, ver y borrar ciertos elementos de una tienda (parte de gestión). Además, se trata de una aplicación en la cual a partir de items puedes crear packs, los cuales están a la venta. Las características de los packs se calculan (en el backend) en función de ciertas reglas de negocio, de manera que al crear o editar un pack no es necesario pensar en qué precio ponerle o qué stock queda, basta con añadir los items y hay una lógica por detrás que te genera los packs. Por otra parte poder comprar objetos y añadirlos a un carrito pudiendo calcular el precio final. Uno de los objetivos es hacer un software lo más usable y visualmente atractivo posible.
 #### Objetivos personales
 -  Dentro de los objetivos personales está el hecho de poder crear un software de cero por primera vez pudiendo tener una parte front y una parte back. Quería tocar todos los conocimientos aprendidos durante el curso: desarrollo de API rests, maquetación front (y fetch), programación funcional, localStorage... 
-### Tecnologies
+### Tecnologías
 #### Front
 - Para el front he usado el framework **Vue**.  Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código.
 - **Vuetify** como librería de maquetación.  Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos, no la había usado nunca y quería aprender a usarla. 
