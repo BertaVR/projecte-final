@@ -55,7 +55,7 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
 - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
 - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
 ## Bibliografia i webgrafia
-Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
-login -> https://codesandbox.io/s/0q4kvj8n0l
-filtros -> https://codepen.io/yosafatade/pen/gyEKeW
-icono shopping cart -> https://www.flaticon.com/free-icons/shopping-cart
+- Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp  
+- login -> https://codesandbox.io/s/0q4kvj8n0l  
+- filtros -> https://codepen.io/yosafatade/pen/gyEKeW  
+- icono shopping cart -> https://www.flaticon.com/free-icons/shopping-cart  
