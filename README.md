@@ -37,7 +37,7 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
 ### Planificación
-    ![Diagrama de Gantt](/doc/img/gantt.png)
+   ![Diagrama de Gantt](/doc/img/gantt.png)
 
 ### Análisis previo
 #### Historias de Usuario.
