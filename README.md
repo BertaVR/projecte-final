@@ -43,12 +43,14 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 
 ### Análisis previo
 #### Historias de Usuario.
+Las historias de usuario iniciales eran las siguientes:
 - Como usuario quiero una pantalla para ser capaz de ver el stock de los productos
 - Como usuario quiero autenticación para poder hacerme una cuenta  y loggearme
 - Como usuario quiero una feature para poder adquirir los productos. Entonces su stock bajará
 - Como gestor de la tienda quiero una feature para poder ver, crear, actualizar y borrar productos.
 - Como dueño de la tienda quiero autorización para que dependiendo de los permisos que tenga el perfil, pueda solo comprar el producto (perfil de usuario) o bien poder hacer operaciones con el inventario (perfil de gestor)
 
+Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
 #### Modelo relacional.
 Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica.
 
