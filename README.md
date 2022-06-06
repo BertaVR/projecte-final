@@ -52,12 +52,24 @@ Las historias de usuario iniciales eran las siguientes:
 
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
 #### Modelo relacional.
-Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica.
+Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
 
-Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**) la asociación entre colecciones se da de la siguiente manera:
-- Cada item tiene un id (además de otras propiedades como nommbre, stock, calidad, demanda, precio y material)
-- Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".  
-    ![Modelo de composición](/doc/img/referencia-items.png)
+Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**, esto es m-n) la asociación entre colecciones se da de la siguiente manera:
+- Cada item tiene un id (además de otras propiedades como nombre, stock, calidad, demanda, precio y material)
+- Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
+- Los items pueden pertenecer a uno o varios packs, los packs pueden contener uno o varios items
+    ![Modelo de referencia](/doc/img/referencia-items.png)
+Concretando un poquito más sobre el modelo de datos, y más allá de las relaciones. El esquema sería el siguiente:
+ - Para los items:
+     - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
+     - Calidad: tiene que ser un número entero entre 0 y 50 (la calidad es una especie de índice ficticio)
+     - Demanda: tiene que ser un número entero entre 0 y 100 (la demanda es una especie de índice ficticio)
+     - Material: el material puede ser indestructible, consumible o normal, es un tipo enumerado.
+     - Precio: tiene que ser un número mayor que 0, puede ser un decimal.
+     - Stock: tiene que ser un número entero mayor que 0
+ - Para los packs:
+     - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
+     - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
 #### Borrador pantallas
 ### Disseny i implementació
 ### Producció
