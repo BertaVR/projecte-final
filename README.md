@@ -79,17 +79,21 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
      - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
      - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
 #### Borrador de pantallas
-##### Paleta de colores
+##### Wireframe
+##### Paleta de colores y fuente
 <p align="center">
   <img alt="Paleta de colores" src="/doc/img/paleta.png">
 </p>
 
   En la imagen de aquí arriba se puede ver la paleta de colores. En la paleta que elegí priman colores relativamente fríos con el objetivo de transmitir una imagen de elegancia, parsimonia y calma. Por la misma razón, la elección de los colores es bastante minimalista, priorizando el color blanco y dejando los colores para acentuar partes importantes de la aplicación y colocándolos coherentemente para asegurar una buena experiencia de usuario (ejemplo: botón de borrar o snackbar de error al añadir un item repetido son rojos, ajustándose a la convención).
+  
+  La fuente utilizada es la Roboto, es la que viene por defecto con Vuetify y no la he cambiado porque me gusta y me parece un buen estándar. La había utilizado en proyectos anteriores más allá de vuetify. Es una fuente sin serifa y con aspecto redondeado lo cual da un aspecto elegante a la par que moderno. En [este enlace a la documentación de vuetify](https://vuetifyjs.com/en/styles/text-and-typography/#typography) se puede obtener más información sobre las tipografías. Tiene peculiaridades como el hecho de que los botones, a pesar de seguir usando la fuente Roboto, tienen la fuente en mayúscula.
    
-### Disseny i implementació
-### Producció
-## Desplegament
-## Resultats i conclusions
+### Diseño e implementación
+### Producción
+## Despliegue
+He tenido problemas con el despliegue porque no he sabido cómo podía comentar la parte front y la parte back. A fecha de 7-7-2022 no hay despliegue hecho, sin embargo queda para una fase dos y es posible que en los próximos días lo haga.
+## Resultados y conclusiones
 - Estoy muy contenta con la elección del framework y las librerías (Vuetify, Vuelidate). Aunque era el primer proyecto con VUe en el que aplicaba lógica, creo que puedo mejorar en temas de dominio del framework, y tengo muchas ganas de conocerlo más a fondo e investigar sin prisas.
 - La elección de una base de datos no relacional no la repetiría.
 Creo que con el tiempo que ha habido para terminar la aplicación he hecho un buen trabajo. Sin embargo, se han quedado puntos pendientes a incluir de cara a una fase 2:
@@ -100,7 +104,7 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
     - Al comprar un elemento habría que comprobar que hay stock del mismo (no lo he implementado porque no he llegado a implementar las compras, pero sería algo a tener en cuenta).
     - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
     - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
-## Bibliografia i webgrafia
+## Bibliografía i webgrafía
 -  [Ejemplo código navbar](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp)
 - [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
 - [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
