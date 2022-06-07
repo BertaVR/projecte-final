@@ -59,7 +59,10 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 - Cada item tiene un id (además de otras propiedades como nombre, stock, calidad, demanda, precio y material)
 - Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
 - Los items pueden pertenecer a uno o varios packs, los packs pueden contener uno o varios items
-    ![Modelo de referencia](/doc/img/referencia-items.png)   
+    <p align="center">
+  <img alt="Modelo de referencia" src="/doc/img/referencia-items.png">
+</p>
+
  ##### Esquema de la BD
    Concretando un poquito más sobre el modelo de datos, y más allá de las relaciones. El esquema sería el siguiente:
  - Para los items:
@@ -75,7 +78,7 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 #### Borrador de pantallas
 ##### Paleta de colores
 <p align="center">
-  <img src="/doc/img/paleta.png">
+  <img alt="Paleta de colores" src="/doc/img/paleta.png">
 </p>
 
   En la imagen de aquí arriba se puede ver la paleta de colores. En la paleta que elegí priman colores relativamente fríos con el objetivo de transmitir una imagen de elegancia, parsimonia y calma. Por la misma razón, la elección de los colores es bastante minimalista, priorizando el color blanco y dejando los colores para acentuar partes importantes de la aplicación y colocándolos coherentemente para asegurar una buena experiencia de usuario (ejemplo: botón de borrar o snackbar de error al añadir un item repetido son rojos).
