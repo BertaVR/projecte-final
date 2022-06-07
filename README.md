@@ -106,7 +106,8 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 - He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string. Al final se ha solucionando parseando el string a JSON para operar con él, y parsear de nuevo ese JSON a string para almacenarlo en el localStorage.
 - He tenido mucho problema para conseguir colocar una modal hasta que he aprendido a  hacerlo y le he cogido soltura.
 - He tenido problemas con las colecciones de la base de datos y el modelo referencial. Me ha costado mucho saber como gestionar el borrado de los items, finalmente he decidido no implementarlo.
--
+#### Metodologías
+ Como he comentado más arriba, he utilizado una metodología en espiral. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban.
 ## Producción
 ### Resultado final
 ### Despliegue
