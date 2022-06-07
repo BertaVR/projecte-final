@@ -29,7 +29,7 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 #### Front
 - Para el front he usado el framework **Vue**.  Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código.
 - **Vuetify** como librería de maquetación.  Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos, no la había usado nunca y quería aprender a usarla. 
-- HTML y CSS.
+- **HTML** y **CSS**.
 -  Como librería de validación en el front he usado **Vuelidate**
 #### BACK
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
@@ -52,7 +52,7 @@ Las historias de usuario iniciales eran las siguientes:
 
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
 #### Modelo relacional.
-Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
+Como he comentado anteriormente, he utilizado **MongoDB**. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
 
 Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**, esto es m-n) la asociación entre colecciones se da de la siguiente manera:
 - Cada item tiene un id (además de otras propiedades como nombre, stock, calidad, demanda, precio y material)
@@ -86,7 +86,11 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
     - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
     - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
 ## Bibliografia i webgrafia
-- Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp  
-- login -> https://codesandbox.io/s/0q4kvj8n0l  
-- filtros -> https://codepen.io/yosafatade/pen/gyEKeW  
-- icono shopping cart -> https://www.flaticon.com/free-icons/shopping-cart  
+-  [Ejemplo código navbar](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp)
+- [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
+- [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
+- [icono shopping cart](https://www.flaticon.com/free-icons/shopping-cart)
+- -[Node](ttps://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+- [Vuetify](https://vuetifyjs.com/en/)
+-  [Vuelidate, librería de validación](https://vuelidate.js.org/)
+-  [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
