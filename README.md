@@ -58,6 +58,7 @@ Las historias de usuario iniciales eran las siguientes:
 - Como gestor de la tienda quiero una feature para poder ver, crear, actualizar y borrar productos.
 - Como dueño de la tienda quiero autorización para que dependiendo de los permisos que tenga el perfil, pueda solo comprar el producto (perfil de usuario) o bien poder hacer operaciones con el inventario (perfil de gestor)
 
+
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
 #### Modelo de datos.
 ##### Modelo de referencia
@@ -99,11 +100,13 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 La implementación ha tenido la fase de análisis, la fase de codificación, la fase de testing y la fase de documentación (tanto el presente documento como el anteproyecto).
 Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto) y ahora al final (documentación final del proyecto), el resto de fases se han ido dando iterativamente y paralelamente, en modo de metodología en espiral, de manera que: analizaba el diseño, la arquitectura y la funcionalidad de un posible desarrollo, lo codificaba, y por último lo probaba bien para detectar cualquier error. Periódicamente he ido haciendo pruebas de regresión para detectar si había algo que había dejado de funcionar.
 #### Problemas
+
 - He tenido problemas con el despliegue al tener el front y el back en repositorios separados.
-- He tenido problemas con Vue a la hora de pasar datos de un módulo a otro.
-- He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string.
+- He tenido problemas con Vue a la hora de pasar datos de un módulo a otro. Al final he conseguido hacer un bind de ciertos datos, y para pasar funciones de un módulo a otro no me ha quedado otra opción que repetir código (por desconocimiento de Vue)
+- He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string. Al final se ha solucionando parseando el string a JSON para operar con él, y parsear de nuevo ese JSON a string para almacenarlo en el localStorage.
 - He tenido mucho problema para conseguir colocar una modal hasta que he aprendido a  hacerlo y le he cogido soltura.
 - He tenido problemas con las colecciones de la base de datos y el modelo referencial. Me ha costado mucho saber como gestionar el borrado de los items, finalmente he decidido no implementarlo.
+-
 ## Producción
 ### Resultado final
 ### Despliegue
