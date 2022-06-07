@@ -90,7 +90,7 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
 - [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
 - [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
 - [icono shopping cart](https://www.flaticon.com/free-icons/shopping-cart)
-- -[Node](ttps://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+- [Node](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
 - [Vuetify](https://vuetifyjs.com/en/)
 -  [Vuelidate, librería de validación](https://vuelidate.js.org/)
 -  [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
