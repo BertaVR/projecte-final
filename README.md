@@ -58,7 +58,8 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 - Cada item tiene un id (además de otras propiedades como nombre, stock, calidad, demanda, precio y material)
 - Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
 - Los items pueden pertenecer a uno o varios packs, los packs pueden contener uno o varios items
-    ![Modelo de referencia](/doc/img/referencia-items.png)
+    ![Modelo de referencia](/doc/img/referencia-items.png)   
+    
     Concretando un poquito más sobre el modelo de datos, y más allá de las relaciones. El esquema sería el siguiente:
  - Para los items:
      - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
