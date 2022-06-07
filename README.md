@@ -33,9 +33,9 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - **Vuetify** como librería de maquetación.  Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos, no la había usado nunca y quería aprender a usarla. 
 - **HTML** y **CSS**.
 -  Como librería de validación en el front he usado [**Vuelidate**]((https://vuelidate.js.org/))
-#### BACK
+#### Back
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
-#### BASE DE DATOS
+#### Base de datos
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
 ### Planificación
