@@ -74,7 +74,10 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
      - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
 #### Borrador de pantallas
 ##### Paleta de colores
-  ![Paleta de colores](/doc/img/paleta.png)  
+<p align="center">
+  <img src="/doc/img/paleta.png">
+</p>
+
   En la imagen de aquí arriba se puede ver la paleta de colores. En la paleta que elegí priman colores relativamente fríos con el objetivo de transmitir una imagen de elegancia, parsimonia y calma. Por la misma razón, la elección de los colores es bastante minimalista, priorizando el color blanco y dejando los colores para acentuar partes importantes de la aplicación y colocándolos coherentemente para asegurar una buena experiencia de usuario (ejemplo: botón de borrar o snackbar de error al añadir un item repetido son rojos).
    
 ### Disseny i implementació
