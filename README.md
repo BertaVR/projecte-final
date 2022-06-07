@@ -37,7 +37,8 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
 #### Base de datos
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
-## Desenvolupament de l’Aplicació
+- 
+## Desarrollo de la aplicación
 ### Planificación
 
 <p align="center">
@@ -58,7 +59,7 @@ Las historias de usuario iniciales eran las siguientes:
 - Como dueño de la tienda quiero autorización para que dependiendo de los permisos que tenga el perfil, pueda solo comprar el producto (perfil de usuario) o bien poder hacer operaciones con el inventario (perfil de gestor)
 
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
-#### Modelo de la BD.
+#### Modelo de datos.
 ##### Modelo de referencia
 Como he comentado anteriormente, he utilizado **MongoDB**. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
 
@@ -70,7 +71,7 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
   <img alt="Modelo de referencia" src="/doc/img/referencia-items.png">
 </p>
 
- ##### Esquema de la BD
+ ##### Esquema de los datos
    Concretando un poquito más sobre el modelo de datos, y más allá de las relaciones. El esquema sería el siguiente:
  - Para los items:
      - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
@@ -93,7 +94,16 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
   
   La fuente utilizada es la Roboto, es la que viene por defecto con Vuetify y no la he cambiado porque me gusta y me parece un buen estándar. La había utilizado en proyectos anteriores más allá de vuetify. Es una fuente sin serifa y con aspecto redondeado lo cual da un aspecto elegante a la par que moderno. En [este enlace a la documentación de vuetify](https://vuetifyjs.com/en/styles/text-and-typography/#typography) se puede obtener más información sobre las tipografías. Tiene peculiaridades como el hecho de que los botones, a pesar de seguir usando la fuente Roboto, tienen la fuente en mayúscula.
    
-### Diseño e implementación
+### Proceso de implementacion
+#### Fases
+La implementación ha tenido la fase de análisis, la fase de codificación, la fase de testing y la fase de documentación (tanto el presente documento como el anteproyecto).
+Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto) y ahora al final (documentación final del proyecto), el resto de fases se han ido dando iterativamente y paralelamente, en modo de metodología en espiral, de manera que: analizaba el diseño, la arquitectura y la funcionalidad de un posible desarrollo, lo codificaba, y por último lo probaba bien para detectar cualquier error. Periódicamente he ido haciendo pruebas de regresión para detectar si había algo que había dejado de funcionar.
+#### Problemas
+- He tenido problemas con el despliegue al tener el front y el back en repositorios separados.
+- He tenido problemas con Vue a la hora de pasar datos de un módulo a otro.
+- He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string.
+- He tenido mucho problema para conseguir colocar una modal hasta que he aprendido a  hacerlo y le he cogido soltura.
+- He tenido problemas con las colecciones de la base de datos y el modelo referencial. Me ha costado mucho saber como gestionar el borrado de los items, finalmente he decidido no implementarlo.
 ## Producción
 ### Resultado final
 ### Despliegue
