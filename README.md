@@ -29,7 +29,7 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 #### Front
 - Para el front he usado el framework **Vue**.  Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código.
 - **Vuetify** como librería de maquetación.  Vuetify me parece una librería muy fácil de usar y con componentes reusables y muy estéticos, no la había usado nunca y quería aprender a usarla. 
-- HTML y CSS.
+- **HTML** y **CSS**.
 -  Como librería de validación en el front he usado **Vuelidate**
 #### BACK
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
@@ -37,18 +37,46 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
 ## Desenvolupament de l’Aplicació
 ### Planificación
-   ![Diagrama de Gantt](/doc/img/gantt.png)
+   ![Diagrama de Gantt](/doc/img/gantt.png)  
+   
+En la imagen de arriba se puede ver la planificaciónn inicial. El proyecto estaba pensado para seguir una metodología iterativa o en espiral, es por eso que todas las fases del proyecto eran constantes durante todo el desarrollo (excepto el anteproyecto, que estaba pensado para hacerlo al inicio y no tocarlo, y la documentación y despligue, que planeé que fuera al final). De esta manera, paralelamente al desarrollo se hacían las pruebas, el análisis (decidir qué es prioritario y qué no, qué tengo medios para hacer y qué no soy  capaz de hacer, qué tecnologías usar...). En este sentido sí que se ha cumplido bastante el planning, con la salvedad del despliegue (que ha fecha de hoy no he conseguido hacer). Lo que no se habría cumplido sería la planificación de las semanas, empezando por el hecho de que al final pude empezar el proyecto más tarde de lo que tenía previsto (después de semana santa en vez de antes)
 
 ### Análisis previo
 #### Historias de Usuario.
-#### Modelo relacional.
-Como he comentado anteriormente, he utilizado MongoDB. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica.
+Las historias de usuario iniciales eran las siguientes:
+- Como usuario quiero una pantalla para ser capaz de ver el stock de los productos
+- Como usuario quiero autenticación para poder hacerme una cuenta  y loggearme
+- Como usuario quiero una feature para poder adquirir los productos. Entonces su stock bajará
+- Como gestor de la tienda quiero una feature para poder ver, crear, actualizar y borrar productos.
+- Como dueño de la tienda quiero autorización para que dependiendo de los permisos que tenga el perfil, pueda solo comprar el producto (perfil de usuario) o bien poder hacer operaciones con el inventario (perfil de gestor)
 
-Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**) la asociación entre colecciones se da de la siguiente manera:
-- Cada item tiene un id (además de otras propiedades como nommbre, stock, calidad, demanda, precio y material)
-- Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".  
-    ![Modelo de composición](/doc/img/referencia-items.png)
-#### Borrador pantallas
+Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
+#### Modelo de la BD.
+##### Modelo de refetencia
+Como he comentado anteriormente, he utilizado **MongoDB**. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
+
+Visto que el proyecto trata de Packs que contienen **items**(en notación UML podríamos afirmar que es items y packs mantienen una relación de **agregación**, esto es m-n) la asociación entre colecciones se da de la siguiente manera:
+- Cada item tiene un id (además de otras propiedades como nombre, stock, calidad, demanda, precio y material)
+- Cada pack tiene ciertas propiedades que no implican relación (id, nombre,precio, calidad, stock). Por otro lado, también tiene una propiedad que SÍ implica "relación" (entendida como asociacion entre objetos) llamada "items". Esta propiedad es un array. El array contiene los ids de los items que vienen incluidos en el pack (recordemos que hemos dicho que los items tenían un id), y cada id hace referencia al objeto con esa id que está en la colección "items".
+- Los items pueden pertenecer a uno o varios packs, los packs pueden contener uno o varios items
+    ![Modelo de referencia](/doc/img/referencia-items.png)   
+ ##### Esquema de la BD
+   Concretando un poquito más sobre el modelo de datos, y más allá de las relaciones. El esquema sería el siguiente:
+ - Para los items:
+     - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
+     - Calidad: tiene que ser un número entero entre 0 y 50 (la calidad es una especie de índice ficticio)
+     - Demanda: tiene que ser un número entero entre 0 y 100 (la demanda es una especie de índice ficticio)
+     - Material: el material puede ser indestructible, consumible o normal, es un tipo enumerado.
+     - Precio: tiene que ser un número mayor que 0, puede ser un decimal.
+     - Stock: tiene que ser un número entero mayor que 0
+ - Para los packs:
+     - Nombre: tiene que ser único (no existir en base de datos otro item con el mismo nombre) y tener de 3 a 40 caracteres.
+     - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
+#### Borrador de pantallas
+##### Paleta de colores
+  ![Paleta de colores](/doc/img/paleta.png)  
+  En la imagen de aquí arriba se puede ver la paleta de colores. En la paleta que elegí priman colores relativamente fríos con el objetivo de transmitir una imagen de elegancia, parsimonia y calma. Por la misma razón, la elección de los colores es bastante minimalista, priorizando el color blanco y dejando los colores para acentuar partes importantes de la aplicación y colocándolos coherentemente para asegurar una buena experiencia de usuario (ejemplo: botón de borrar o snackbar de error al añadir un item repetido son rojos).
+   
 ### Disseny i implementació
 ### Producció
 ## Desplegament
@@ -64,7 +92,11 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
     - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
     - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
 ## Bibliografia i webgrafia
-- Navbar -> https://www.w3schools.com/howto/howto_js_topnav_responsive.asp  
-- login -> https://codesandbox.io/s/0q4kvj8n0l  
-- filtros -> https://codepen.io/yosafatade/pen/gyEKeW  
-- icono shopping cart -> https://www.flaticon.com/free-icons/shopping-cart  
+-  [Ejemplo código navbar](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp)
+- [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
+- [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
+- [icono shopping cart](https://www.flaticon.com/free-icons/shopping-cart)
+- [Node](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+- [Vuetify](https://vuetifyjs.com/en/)
+-  [Vuelidate, librería de validación](https://vuelidate.js.org/)
+-  [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
