@@ -8,6 +8,18 @@
         - [Objetivos personales](#objetivos-personales)
 
     - [Tecnologías](#tecnologías)  
+- [Desarrollo de la aplicación](#desarrollo-de-la-aplicación)  
+    - [Planificación](#planificación)  
+    - [Análisis previo](#análisis-previo)
+        - [Historias de usuario](#historias-de-usuario)
+        - [Modelo de datos](#modelo-de-datos)    
+        - [Borrador de pantallas](#borrador-de-pantallas)    
+
+    - [Objetivos](#objetivos)  
+        - [Objetivos de software](#objetivos-de-software)
+        - [Objetivos personales](#objetivos-personales)
+
+    - [Tecnologías](#tecnologías)  
        
 
 
@@ -63,7 +75,7 @@ Las historias de usuario iniciales eran las siguientes:
 
 
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
-#### Modelo de datos.
+#### Modelo de datos
 ##### Modelo de referencia
 Como he comentado anteriormente, he utilizado **MongoDB**. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
 
