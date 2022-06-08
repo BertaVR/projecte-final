@@ -85,7 +85,8 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
      - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
 #### Borrador de pantallas
 ##### Wireframe
-Las pantallas son las siguientes:  
+Las pantallas son las siguientes: 
+
 - Login ![Login](/doc/img/wireframe-login.png)
 
 ##### Paleta de colores y fuente
