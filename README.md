@@ -145,8 +145,10 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 - He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string. Al final se ha solucionando parseando el string a JSON para operar con él, y parsear de nuevo ese JSON a string para almacenarlo en el localStorage.
 - He tenido mucho problema para conseguir colocar una modal hasta que he aprendido a  hacerlo y le he cogido soltura.
 - He tenido problemas con las colecciones de la base de datos y el modelo referencial. Me ha costado mucho saber como gestionar el borrado de los items, finalmente he decidido no implementarlo.
+- He tenido problemas para hacer una pasarela de pago, ya que es una logística complicada a la hora de implementar una real.
 #### Metodologías
- Como he comentado más arriba, he utilizado una metodología en espiral. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban.
+ Como he comentado más arriba, he utilizado una metodología en espiral haciendo iteraciones entre todas las fases del desarrollo. Me ha parecido adecuada para un proyecto pequeño, con poco tiempo y con la presión de un deadline inamovible donde buscaba en todo momento un mínimo producto viable e ir mejorando poco a poco el producto. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban. Para futuros proyectos utilizaré metodologías ágiles de manera más intensiva porque son las que han demostrado funcionar mejor.
+ 
 ## Producción
 ### Resultado final
  
