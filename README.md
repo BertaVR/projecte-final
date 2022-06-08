@@ -135,6 +135,33 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
  Como he comentado más arriba, he utilizado una metodología en espiral. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban.
 ## Producción
 ### Resultado final
+ 
+- Formulario ed creación de item   
+![Formulario crear item](/doc/img/pantalla-crear-item.png)
+
+- Pantalla de todos los items 
+![Pantalla de todos los items](/doc/img/pantalla-todos-items.png)
+
+- Formulario de creación de pack  
+![Formulario crear pack](/doc/img/pantalla-form-packs.png)
+
+- Pantalla de todos los packs 
+![Pantalla de todos los packs](/doc/img/pantalla-todos-packs.png)
+
+- Vista de la tarjeta de packs desplegada
+![Tarjeta de packs desplegada](/doc/img/tarjeta-pack-desplegada.png)
+
+- Modal para ver un item de un pack (clickando en uno de sus items)
+![Modal de items a la que se accede desde un pack que contiene dicho item](/doc/img/ver-item-de-un-pack.png)
+
+- Modal para editar un pack
+![Modal de edición de un pack](/doc/img/pantalla-editar-pack.png)
+
+- Modal carrito de la compra
+![Modal de carrito de compra](/doc/img/pantalla-carrito.png)
+- Pantalla de login (esta es accesible desde la ruta /login, pero en la aplicación no se encuentra ningún enlace a ella ya que la autenticación todavía no es funcional, queda para una segunda fase)
+![Pantalla del login](/doc/img/vista-login.png)
+ 
 ### Despliegue
 He tenido problemas con el despliegue porque no he sabido cómo podía comentar la parte front y la parte back. A fecha de 7-7-2022 no hay despliegue hecho, sin embargo queda para una fase dos y es posible que en los próximos días lo haga. En todo caso el plan es que el despliegue se haga con Heroku, ya que después de haber investigado parece de las alternativas más sencillas y rápidas para desplegar. Además es gratuíta y no necesitas un servdor propio.
 
