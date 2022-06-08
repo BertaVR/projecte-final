@@ -16,6 +16,8 @@
         - [Borrador de pantallas](#borrador-de-pantallas)    
     - [Proceso de implementación](#proceso-de-implementación)  
     - [Producción](#producción)  
+         - [Resultado final](#resultado-final)
+        - [Despliegue](#despliegue) 
 - [Resultados y conclusiones](#resultados-y-conclusiones)  
 - [Webgrafía](#webgrafía)
 
