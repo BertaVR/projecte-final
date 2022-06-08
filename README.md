@@ -91,10 +91,14 @@ Las pantallas son las siguientes:
 ![Login](/doc/img/wireframe-login.png)
 
 - Form para crear items  
-![Formulario de creación de items](wireframe-crear-item.png)
+![Wireframe del formulario de creación de items](doc/img/wireframe-crear-item.png)
 
 - Form para crear packs  
-![Formulario de creación de packs](wireframe-crear-packs.png)
+![Wireframe del  formulario de creación de packs](doc/img/wireframe-crear-pack.png)
+
+- Carrito de la compra  
+![Wireframe del  carrito de la compra](doc/img/wireframe-carrito-compra.png)
+
 
 ##### Paleta de colores y fuente
 <p align="center">
