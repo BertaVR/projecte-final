@@ -99,6 +99,14 @@ Las pantallas son las siguientes:
 - Carrito de la compra  
 ![Wireframe del  carrito de la compra](doc/img/wireframe-carrito-compra.png)
 
+- Login
+![Wireframe de la vista de Login](/doc/img/wireframe-login.png)  
+
+- Card de un elemento (tanto item como pack)
+![Wireframe tarjeta de un elemento](/doc/img/wireframe-getOne.png)  
+
+- Pantalla todos los elementos (tanto items como packs)
+![Wireframe pantalla todos los elementos](/doc/img/wireframe-getAll.png)
 
 ##### Paleta de colores y fuente
 <p align="center">
