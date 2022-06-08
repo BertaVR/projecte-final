@@ -1,7 +1,7 @@
 # Projecte-final
 ## Tabla de contenidos
 - [Introducción](#introducción)  
-    -[Datos](#datos)  
+    - [Datos](#datos)  
     - [Descripción](#descripción)    
     - [Objetivos](#objetivos)  
         - [Objetivos de software](#objetivos-de-software)
