@@ -89,6 +89,8 @@ Las pantallas son las siguientes:
 
 - Login ![Login](/doc/img/wireframe-login.png)
 
+Form para crear items ![Formulario de creación de items](wireframe-crear-item.png)
+
 ##### Paleta de colores y fuente
 <p align="center">
   <img alt="Paleta de colores" src="/doc/img/paleta.png">
