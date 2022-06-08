@@ -1,10 +1,14 @@
 # Projecte-final
 ## Tabla de contenidos
-- [Datos](#datos)
+- [Introducción](#introducción)  
+    -[Datos](#datos)  
+    - [Descripción](#descripción)    
+    - [Objetivos](#objetivos)  
+        - [Objetivos de software](#objetivos-de-software)
+        - [Objetivos personales](#objetivos-personales)
 
-- [Descripción](#descripción)  
-- [Objetivos](#objetivos)  
-- [Tecnologías](#tecnologías)  
+    - [Tecnologías](#tecnologías)  
+       
 
 
 ## Introducción
