@@ -108,6 +108,9 @@ Las pantallas son las siguientes:
 - Pantalla todos los elementos (tanto items como packs)  
 ![Wireframe pantalla todos los elementos](/doc/img/wireframe-getAll.png)
 
+El principal cambio respecto a los wireframes es que, si bien en un principio las pantallas de formulario y las de vista de todos los elementos, iban a ser páginas diferentes, al final se ha replanteado la idea y el componente del formulario está en la misma vista que el componente de la lista de todos los objetos. Me ha parecido mucho más usable hacerlo así, ya que te ahorras clicks y pantallas innecesarias. Tengo la pantalla de packs con su formulario y los resultados y tengo la pantalla de items con su formulario y los resultados.
+Además, ha habido otros cambios respecto al diseño como los botones, la inclusión de filtros, o el diseño de los inputs de los formularios, ha cambiado mucho el diseño respecto al wireframe original. Esto se debe a la metodología: como  comentaré más abajo he seguido una metodología en espiral, en cada iteración me replanteaba el diseño, con lo cual el wireframe que hice al principio es muy virgen en comparación con el diseño final.
+
 ##### Paleta de colores y fuente
 <p align="center">
   <img alt="Paleta de colores" src="/doc/img/paleta.png">
