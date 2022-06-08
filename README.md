@@ -131,3 +131,4 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
 - [Vuetify](https://vuetifyjs.com/en/)
 -  [Vuelidate, librería de validación](https://vuelidate.js.org/)
 -  [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+-  [Principios del diseño web](https://docs.google.com/document/d/1jSeTGD8hoqMQDmt_Ni0i7zfQvEVK3yOkwMmQg-EvOic/edit)
