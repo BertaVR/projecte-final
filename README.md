@@ -85,8 +85,31 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
      - Items: tiene que ser un array de ids de items (que en el fondo son la referencia a la entidad entera). Aunque los items se guarden mediante la referencia id, para crear o modificar packs, se añade el nombre de los items, es el back el que se encarga de la conversión.
 #### Borrador de pantallas
 ##### Wireframe
-Las pantallas son las siguientes:  
-- Login ![Login](/doc/img/wireframe-login.png)
+Las pantallas son las siguientes: 
+
+- Login   
+![Login](/doc/img/wireframe-login.png)
+
+- Form para crear items  
+![Wireframe del formulario de creación de items](doc/img/wireframe-crear-item.png)
+
+- Form para crear packs  
+![Wireframe del  formulario de creación de packs](doc/img/wireframe-crear-pack.png)
+
+- Carrito de la compra  
+![Wireframe del  carrito de la compra](doc/img/wireframe-carrito-compra.png)
+
+- Login  
+![Wireframe de la vista de Login](/doc/img/wireframe-login.png)  
+
+- Card de un elemento (tanto item como pack)  
+![Wireframe tarjeta de un elemento](/doc/img/wireframe-getOne.png)  
+
+- Pantalla todos los elementos (tanto items como packs)  
+![Wireframe pantalla todos los elementos](/doc/img/wireframe-getAll.png)
+
+El principal cambio respecto a los wireframes es que, si bien en un principio las pantallas de formulario y las de vista de todos los elementos, iban a ser páginas diferentes, al final se ha replanteado la idea y el componente del formulario está en la misma vista que el componente de la lista de todos los objetos. Me ha parecido mucho más usable hacerlo así, ya que te ahorras clicks y pantallas innecesarias. Tengo la pantalla de packs con su formulario y los resultados y tengo la pantalla de items con su formulario y los resultados.
+Además, ha habido otros cambios respecto al diseño como los botones, la inclusión de filtros, o el diseño de los inputs de los formularios, ha cambiado mucho el diseño respecto al wireframe original. Esto se debe a la metodología: como  comentaré más abajo he seguido una metodología en espiral, en cada iteración me replanteaba el diseño, con lo cual el wireframe que hice al principio es muy virgen en comparación con el diseño final.
 
 ##### Paleta de colores y fuente
 <p align="center">
@@ -114,6 +137,32 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 ### Resultado final
 ### Despliegue
 He tenido problemas con el despliegue porque no he sabido cómo podía comentar la parte front y la parte back. A fecha de 7-7-2022 no hay despliegue hecho, sin embargo queda para una fase dos y es posible que en los próximos días lo haga. En todo caso el plan es que el despliegue se haga con Heroku, ya que después de haber investigado parece de las alternativas más sencillas y rápidas para desplegar. Además es gratuíta y no necesitas un servdor propio.
+
+Hasta que no haya un despliegue el proceso para poder acceder al proyecto en local sería:
+- Clonar [el repositorio con el backend](https://github.com/BertaVR/js-amenities-express) 
+- Dede el repositorio del backend, abrir una consola y ejecutar el siguiente comando para it al directorio donde se encuentra el proyecto de node:
+```shell script
+ cd amenities
+```
+- A partir de dicho directorio instale el proyecto ejecutando el siguiente comando:
+```shell script
+ npm i
+```
+
+- Para iniciar la API del proyecto ejecute la siguiente frase:
+```shell script
+npm run serverstart
+``````
+- Una vez seguidos estos pasos ya estará la API funcionando en el puerto 3000 del localhost. En el repositorio del backend aparece más información sobre cómo pasar los tests y ejemplos de peticiones y respuestas. No lo coloco en esta documentación porque no se ajusta a los requerimientos de la misma
+- A continuación, habrá que clonar el presente repositorio ( el front)
+- Usando la versión de node, hay que ejecutar la siguiente sentencia para servir el frontend: 
+
+```shell script
+npm run serve
+``````
+
+- Una vez hecho esto, si desde el navegador accedes a http://localhost:8080/, ya tendrás disponible el pront conectado a la lógica del backend y la base de datos.
+
 ## Resultados y conclusiones
 - Estoy muy contenta con la elección del framework y las librerías (Vuetify, Vuelidate). Aunque era el primer proyecto con VUe en el que aplicaba lógica, creo que puedo mejorar en temas de dominio del framework, y tengo muchas ganas de conocerlo más a fondo e investigar sin prisas.
 - La elección de una base de datos no relacional no la repetiría.
