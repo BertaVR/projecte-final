@@ -87,9 +87,14 @@ Visto que el proyecto trata de Packs que contienen **items**(en notación UML po
 ##### Wireframe
 Las pantallas son las siguientes: 
 
-- Login ![Login](/doc/img/wireframe-login.png)
+- Login   
+![Login](/doc/img/wireframe-login.png)
 
-Form para crear items ![Formulario de creación de items](wireframe-crear-item.png)
+- Form para crear items  
+![Formulario de creación de items](wireframe-crear-item.png)
+
+- Form para crear packs  
+![Formulario de creación de packs](wireframe-crear-packs.png)
 
 ##### Paleta de colores y fuente
 <p align="center">
