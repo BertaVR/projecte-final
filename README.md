@@ -36,7 +36,7 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
 #### Base de datos
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
-- 
+
 ## Desarrollo de la aplicación
 ### Planificación
 
