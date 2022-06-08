@@ -14,13 +14,10 @@
         - [Historias de usuario](#historias-de-usuario)
         - [Modelo de datos](#modelo-de-datos)    
         - [Borrador de pantallas](#borrador-de-pantallas)    
-
-    - [Objetivos](#objetivos)  
-        - [Objetivos de software](#objetivos-de-software)
-        - [Objetivos personales](#objetivos-personales)
-
-    - [Tecnologías](#tecnologías)  
-       
+    - [Proceso de implementación](#proceso-de-implementación)  
+    - [Producción](#producción)  
+- [Resultados y conclusiones](#resultados-y-conclusiones)  
+- [Webgrafia](#webgrafia)
 
 
 ## Introducción
