@@ -137,6 +137,32 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 ### Resultado final
 ### Despliegue
 He tenido problemas con el despliegue porque no he sabido cómo podía comentar la parte front y la parte back. A fecha de 7-7-2022 no hay despliegue hecho, sin embargo queda para una fase dos y es posible que en los próximos días lo haga. En todo caso el plan es que el despliegue se haga con Heroku, ya que después de haber investigado parece de las alternativas más sencillas y rápidas para desplegar. Además es gratuíta y no necesitas un servdor propio.
+
+Hasta que no haya un despliegue el proceso para poder acceder al proyecto en local sería:
+- Clonar [el repositorio con el backend](https://github.com/BertaVR/js-amenities-express) 
+- Dede el repositorio del backend, abrir una consola y ejecutar el siguiente comando para it al directorio donde se encuentra el proyecto de node:
+```shell script
+ cd amenities
+```
+- A partir de dicho directorio instale el proyecto ejecutando el siguiente comando:
+```shell script
+ npm i
+```
+
+- Para iniciar la API del proyecto ejecute la siguiente frase:
+```shell script
+npm run serverstart
+``````
+- Una vez seguidos estos pasos ya estará la API funcionando en el puerto 3000 del localhost. En el repositorio del backend aparece más información sobre cómo pasar los tests y ejemplos de peticiones y respuestas. No lo coloco en esta documentación porque no se ajusta a los requerimientos de la misma
+- A continuación, habrá que clonar el presente repositorio ( el front)
+- Usando la versión de node, hay que ejecutar la siguiente sentencia para servir el frontend: 
+
+```shell script
+npm run serve
+``````
+
+- Una vez hecho esto, si desde el navegador accedes a http://localhost:8080/, ya tendrás disponible el pront conectado a la lógica del backend y la base de datos.
+
 ## Resultados y conclusiones
 - Estoy muy contenta con la elección del framework y las librerías (Vuetify, Vuelidate). Aunque era el primer proyecto con VUe en el que aplicaba lógica, creo que puedo mejorar en temas de dominio del framework, y tengo muchas ganas de conocerlo más a fondo e investigar sin prisas.
 - La elección de una base de datos no relacional no la repetiría.
