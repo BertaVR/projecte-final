@@ -154,7 +154,7 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 ## Producción
 ### Resultado final
  
-- Formulario ed creación de item   
+- Formulario de creación de item   
 ![Formulario crear item](/doc/img/pantalla-crear-item.png)
 
 - Pantalla de todos los items  
