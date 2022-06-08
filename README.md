@@ -17,7 +17,7 @@
     - [Proceso de implementación](#proceso-de-implementación)  
     - [Producción](#producción)  
 - [Resultados y conclusiones](#resultados-y-conclusiones)  
-- [Webgrafia](#webgrafia)
+- [Webgrafía](#webgrafía)
 
 
 ## Introducción
@@ -214,7 +214,7 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
     - Al comprar un elemento habría que comprobar que hay stock del mismo (no lo he implementado porque no he llegado a implementar las compras, pero sería algo a tener en cuenta).
     - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
     - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
-## Bibliografía i webgrafía
+## Webgrafía
 -  [Ejemplo código navbar](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp)
 - [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
 - [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
