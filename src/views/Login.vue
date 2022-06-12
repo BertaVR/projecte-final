@@ -1,8 +1,8 @@
 <template>
   <div class="packsSCreen">
-<Header></Header>
-<Login></Login>
-</div>
+    <Header></Header>
+    <Login></Login>
+  </div>
 </template>
 
 <script>
@@ -11,12 +11,12 @@ import Login from "../components/Login.vue"
 export default {
   name: "PacksScreen",
   components: {
-   Login
-},
+    Login
+  },
 };
 </script>
 <style>
-Header:{
+Header: {
   width: 100%;
 }
 </style>
