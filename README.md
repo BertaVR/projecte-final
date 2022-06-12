@@ -1,10 +1,25 @@
 # Projecte-final
 ## Tabla de contenidos
-- [Datos](#datos)
+- [Introducción](#introducción)
+    - [Datos](#datos)
+    - [Descripción](#descripción)    
+    - [Objetivos](#objetivos)  
+        - [Objetivos de software](#objetivos-de-software)
+        - [Objetivos personales](#objetivos-personales)
 
-- [Descripción](#descripción)  
-- [Objetivos](#objetivos)  
-- [Tecnologías](#tecnologías)  
+    - [Tecnologías](#tecnologías)  
+- [Desarrollo de la aplicación](#desarrollo-de-la-aplicación)  
+    - [Planificación](#planificación)  
+    - [Análisis previo](#análisis-previo)
+        - [Historias de usuario](#historias-de-usuario)
+        - [Modelo de datos](#modelo-de-datos)    
+        - [Borrador de pantallas](#borrador-de-pantallas)    
+    - [Proceso de implementación](#proceso-de-implementación)  
+    - [Producción](#producción)  
+         - [Resultado final](#resultado-final)
+        - [Despliegue](#despliegue) 
+- [Resultados y conclusiones](#resultados-y-conclusiones)  
+- [Webgrafía](#webgrafía)
 
 
 ## Introducción
@@ -23,9 +38,12 @@ Finalmente, se trata de una aplicación de venta de Packs compuestos de items. L
 He implementado la posibilidad de crear items, crear packs (a partir de items), editarlos o borrarlos. Además se pueden visualizar los packs y los items. También hay un carrito de la compra en el que añades objetos y te calcula el precio. Se puede vaciar, aumentar la cantidad de un objeto, disminuir la cantidad de un objeto y borrar ese objeto del carrito. 
 ### Objetivos
 #### Objetivos de Software
-- Este software pretende satisfacer la necesidad de una tienda online: Por una parte poder crear, modificar, ver y borrar ciertos elementos de una tienda (parte de gestión). Además, se trata de una aplicación en la cual a partir de items puedes crear packs, los cuales están a la venta. Las características de los packs se calculan (en el backend) en función de ciertas reglas de negocio, de manera que al crear o editar un pack no es necesario pensar en qué precio ponerle o qué stock queda, basta con añadir los items y hay una lógica por detrás que te genera los packs. Por otra parte poder comprar objetos y añadirlos a un carrito pudiendo calcular el precio final. Uno de los objetivos es hacer un software lo más usable y visualmente atractivo posible.
+- Este software pretende satisfacer la necesidad de una tienda online: 
+Por una parte poder crear, modificar, ver y borrar ciertos elementos de una tienda (parte de gestión). Además, se trata de una aplicación en la cual a partir de items puedes crear packs, los cuales están a la venta. Las características de los packs se calculan (en el backend) en función de ciertas reglas de negocio, de manera que al crear o editar un pack no es necesario pensar en qué precio ponerle o qué stock queda, basta con añadir los items y hay una lógica por detrás que te genera los packs. 
+Por otra parte poder añadir objetos a un carrito pudiendo calcular el precio final y comprarlos (la compra no se ha implemetado). También era objetivo la gestión de usuarios: tener un rol de sdminidtrsdor y otro de cliente de manera que el admin puede crear, borrar y editar packs (o items), y el cliente solo comprarlos. Uno de los objetivos es hacer un software lo más usable y visualmente atractivo posible.
+ 
 #### Objetivos personales
--  Dentro de los objetivos personales está el hecho de poder crear un software de cero por primera vez pudiendo tener una parte front y una parte back. Quería tocar todos los conocimientos aprendidos durante el curso: desarrollo de API rests, maquetación front (y fetch), programación funcional, localStorage... 
+-  Dentro de los objetivos personales está el hecho de poder crear un software de cero por primera vez pudiendo tener una parte front y una parte back. Quería tocar todos los conocimientos aprendidos durante el curso: desarrollo de API rests, maquetación front (y fetch), programación funcional, localStorage... A nivel de gestión de proyectos también tenía el objetivo de aprender a llevar un proyecto entero por mi cuenta (en todas sus fases), aprender a gestionar el estrés, y aprender a ser constante. Lo más importante en este proyecto es aprender tanto de los aciertos como de los errores.
 ### Tecnologías
 #### Front
 - Para el front he usado el framework **Vue**.  Elegí Vue porque es el framework que más conocía (el único que habíamos llegado a tocar en clase), y me parece una manera de simplificar el trabajo y reusar código.
@@ -36,7 +54,7 @@ He implementado la posibilidad de crear items, crear packs (a partir de items), 
 - Para el back he usado **node** y **express** porque creo que para un proyecto pequeño como este son suficientes y simplifican mucho la conexión a base de datos.
 #### Base de datos
 - La base de datos es una **MongoDB** -> porque es rápida y flexible. Además he reutilizado parte de un proyecto anterior, el cual ya estaba hecho con mongoDB, node  y express
-- 
+
 ## Desarrollo de la aplicación
 ### Planificación
 
@@ -59,7 +77,7 @@ Las historias de usuario iniciales eran las siguientes:
 
 
 Por diversos motivos no se han podido satisfacer las historias de usuario, algunos requerimientos han cambiado y otros han quedado para una segunda fase, en el apartado de conclusiones hay un resumen más detallado.
-#### Modelo de datos.
+#### Modelo de datos
 ##### Modelo de referencia
 Como he comentado anteriormente, he utilizado **MongoDB**. MongoDB es una base de datos **no relacional**. A pesar de ello, se pueden tener varias coleciones y "relacionarlas" (valga la contradicción con el nombre "no-relacional") mediante **referencias**. He utilizado esta opción, tengo dos colecciones, una de las cuales contiene referencias a la otra. A pesar de que así se pierde un poco el encanto que tiene MongoDB de manejarlo todo en un documento. Sin embargo, la decisión de tener dos colecciones fue más una decisión orientada al aprendizaje y a aprender cosas nuevas (ya que creo que en última instancia ese es el objetivo principal de ese proyecto) que una decisión con justificación técnica. 
 
@@ -96,10 +114,10 @@ Las pantallas son las siguientes:
 - Form para crear packs  
 ![Wireframe del  formulario de creación de packs](doc/img/wireframe-crear-pack.png)
 
-- Carrito de la compra  
+- Carrito de la compra   
 ![Wireframe del  carrito de la compra](doc/img/wireframe-carrito-compra.png)
 
-- Login  
+- Login   
 ![Wireframe de la vista de Login](/doc/img/wireframe-login.png)  
 
 - Card de un elemento (tanto item como pack)  
@@ -120,7 +138,7 @@ Además, ha habido otros cambios respecto al diseño como los botones, la inclus
   
   La fuente utilizada es la Roboto, es la que viene por defecto con Vuetify y no la he cambiado porque me gusta y me parece un buen estándar. La había utilizado en proyectos anteriores más allá de vuetify. Es una fuente sin serifa y con aspecto redondeado lo cual da un aspecto elegante a la par que moderno. En [este enlace a la documentación de vuetify](https://vuetifyjs.com/en/styles/text-and-typography/#typography) se puede obtener más información sobre las tipografías. Tiene peculiaridades como el hecho de que los botones, a pesar de seguir usando la fuente Roboto, tienen la fuente en mayúscula.
    
-### Proceso de implementacion
+### Proceso de implementación
 #### Fases
 La implementación ha tenido la fase de análisis, la fase de codificación, la fase de testing y la fase de documentación (tanto el presente documento como el anteproyecto).
 Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto) y ahora al final (documentación final del proyecto), el resto de fases se han ido dando iterativamente y paralelamente, en modo de metodología en espiral, de manera que: analizaba el diseño, la arquitectura y la funcionalidad de un posible desarrollo, lo codificaba, y por último lo probaba bien para detectar cualquier error. Periódicamente he ido haciendo pruebas de regresión para detectar si había algo que había dejado de funcionar.
@@ -131,10 +149,39 @@ Exceptuando la fase de documentación, que fue hecha al principio (anteproyecto)
 - He tenido problemas con el localStorage, ya que me ha costado gestionarlo al ser un string. Al final se ha solucionando parseando el string a JSON para operar con él, y parsear de nuevo ese JSON a string para almacenarlo en el localStorage.
 - He tenido mucho problema para conseguir colocar una modal hasta que he aprendido a  hacerlo y le he cogido soltura.
 - He tenido problemas con las colecciones de la base de datos y el modelo referencial. Me ha costado mucho saber como gestionar el borrado de los items, finalmente he decidido no implementarlo.
+- He tenido problemas para hacer una pasarela de pago, ya que es una logística complicada a la hora de implementar una real.
 #### Metodologías
- Como he comentado más arriba, he utilizado una metodología en espiral. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban.
+ Como he comentado más arriba, he utilizado una metodología en espiral haciendo iteraciones entre todas las fases del desarrollo. Me ha parecido adecuada para un proyecto pequeño, con poco tiempo y con la presión de un deadline inamovible donde buscaba en todo momento un mínimo producto viable e ir mejorando poco a poco el producto. Además en momentos en los cuales las circunstancias lo han demandado, he utilizado técnicas de otras metodologías como puede ser el panel kanban. Para futuros proyectos utilizaré metodologías ágiles de manera más intensiva porque son las que han demostrado funcionar mejor.
+ 
 ## Producción
 ### Resultado final
+ 
+- Formulario de creación de item   
+![Formulario crear item](/doc/img/pantalla-crear-item.png)
+
+- Pantalla de todos los items  
+![Pantalla de todos los items](/doc/img/pantalla-todos-items.png)
+
+- Formulario de creación de pack   
+![Formulario crear pack](/doc/img/pantalla-form-packs.png)
+
+- Pantalla de todos los packs   
+![Pantalla de todos los packs](/doc/img/pantalla-todos-packs.png)
+
+- Vista de la tarjeta de packs desplegada  
+![Tarjeta de packs desplegada](/doc/img/tarjeta-pack-desplegada.png)
+
+- Modal para ver un item de un pack (clickando en uno de sus items)  
+![Modal de items a la que se accede desde un pack que contiene dicho item](/doc/img/ver-item-de-un-pack.png)
+
+- Modal para editar un pack  
+![Modal de edición de un pack](/doc/img/pantalla-editar-pack.png)
+
+- Modal carrito de la compra  
+![Modal de carrito de compra](/doc/img/pantalla-carrito.png)
+- Pantalla de login (esta es accesible desde la ruta /login, pero en la aplicación no se encuentra ningún enlace a ella ya que la autenticación todavía no es funcional, queda para una segunda fase)
+![Pantalla del login](/doc/img/vista-login.png)
+ 
 ### Despliegue
 He tenido problemas con el despliegue porque no he sabido cómo podía comentar la parte front y la parte back. A fecha de 7-7-2022 no hay despliegue hecho, sin embargo queda para una fase dos y es posible que en los próximos días lo haga. En todo caso el plan es que el despliegue se haga con Heroku, ya que después de haber investigado parece de las alternativas más sencillas y rápidas para desplegar. Además es gratuíta y no necesitas un servdor propio.
 
@@ -174,7 +221,7 @@ Creo que con el tiempo que ha habido para terminar la aplicación he hecho un bu
     - Al comprar un elemento habría que comprobar que hay stock del mismo (no lo he implementado porque no he llegado a implementar las compras, pero sería algo a tener en cuenta).
     - Faltan la autenticación y autorización. Las cuales son importantes para el proyecto y las he dejado para una fase dos porque aún tengo pendiente aprender sobre este tema.
     - También me gustaría refactorizar el código ya que, debido al desconocimiento del framework y a la falta de tiempo me he querido centrar en resultados rápidos y hay puntos a mejorar en cuanto a la mantenibilidad del código. Para una fase 2 tengo pendiente investigar más a fondo el funcionamiento de VUe y mejorar el código acordemente
-## Bibliografía i webgrafía
+## Webgrafía
 -  [Ejemplo código navbar](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp)
 - [Ejemplo código login](https://codesandbox.io/s/0q4kvj8n0l)   
 - [Ejemplo código filtros](https://codepen.io/yosafatade/pen/gyEKeW)  
