@@ -3,7 +3,7 @@
 
   <div class="topnav" id="myTopnav">
     <a href="/">Packs</a>
-    <a href="/about">Items</a>
+    <a href="/items">Items</a>
     <Carrito></Carrito>
 
 

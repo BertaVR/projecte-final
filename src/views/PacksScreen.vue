@@ -3,7 +3,7 @@
 <Header></Header>
 <CreatePackForm></CreatePackForm>
 <Packs></Packs>
-<Footer></Footer>
+<Foote ></Foote>
 </div>
 </template>
 
