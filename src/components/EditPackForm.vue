@@ -1,4 +1,5 @@
 <template>
+<div>
     <v-dialog v-model="dialog" persistent max-width="800px">
         <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" dark v-bind="attrs" v-on="on">
@@ -16,6 +17,7 @@
             </div>
             <v-card-text>
                 <v-container>
+                    
                     <v-row class="fila">
                         <v-col>
                             <v-text-field v-model="nombre" ref="nombre" :error-messages="nombreErrores" :counter="40"
@@ -26,7 +28,7 @@
                         </v-col>
                         <v-col class="boton">
 
-                            <v-btn class="mr-4" color="primary" @click="modificarNombre()">
+                            <v-btn class="mr-4" color="primary" :disabled="$v.nombre.$anyError" @click="modificarNombre()">
                                 modificar nombre
                             </v-btn>
                         </v-col>
@@ -42,7 +44,7 @@
                         </v-col>
                         <v-col class="boton">
 
-                            <v-btn class="mr-4" color="primary" @click="modificarItems()">
+                            <v-btn class="mr-4"  :disabled="$v.itemsEnElPack.$anyError" color="primary" @click="modificarItems()">
                                 modificar items
                             </v-btn>
                         </v-col>
@@ -55,11 +57,20 @@
 
             </v-card-actions>
         </v-card>
+      
     </v-dialog>
+      <v-snackbar :color="snackbar.color" top multiline height="100" font-size="large" v-model="snackbar.show">
+            <template v-slot:action="{ attrs }">
+                {{ snackbar.message }}
+                <v-btn text v-bind="attrs" @click="snackbar.show = false">
+                    Cerrar
+                </v-btn>
+            </template>
+        </v-snackbar>
+        </div>
 </template>
 
 <script>
-import { objectToString } from '@vue/shared';
 import { validationMixin } from 'vuelidate'
 import { required, minLength, decimal, maxLength, integer, minValue, maxValue } from 'vuelidate/lib/validators'
 
@@ -76,6 +87,7 @@ export default {
 
     },
     data: () => ({
+        snackbar:{},
         dialog: false,
         nombre: "",
         materiales: ["normal", "consumible", "indestructible"],
@@ -106,6 +118,8 @@ export default {
         }
     },
     methods: {
+        gestionErroresMessage(statusCode) { if (statusCode == 409) { return "Ya hay un pack con ese nombre" } }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
+
         submit() {
             this.$v.$touch();
         },
@@ -130,6 +144,12 @@ export default {
                     } else {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);
+                        this.snackbar = {
+                            message: this.gestionErroresMessage(response.status),
+                            color: 'error',
+                            show: true,
+                            status: 'error'
+                        }
 
                     }
                 })
@@ -140,7 +160,7 @@ export default {
 
         modificarItems() {
             let self = this;
-            let data= {items: this.itemsEnElPack}
+            let data = { items: this.itemsEnElPack }
 
             fetch(`http://${this.serverip}/packs/${self.objeto.nombre}/updateItems/`, {
                 method: 'PUT',
@@ -155,6 +175,12 @@ export default {
                         console.log("Response OK Status:", response.status);
                         console.log("Reponse OK status text:", response.statusText);
                         self.objeto.nombre = this.nombre //esta línea hace que puedas editar varias veces
+                         this.snackbar = {
+                            message: "Items modificados",
+                            color: 'success',
+                            show: true,
+                            status: 'error'
+                        }
 
                     } else {
                         console.log("Response Status:", response.status);
