@@ -1,11 +1,11 @@
 <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <template>
   <div class="topnav" id="myTopnav">
-    <a href="/" class="active">Packs</a>
+    <a href="/">Packs</a>
     <a href="/about">Items</a>
     <Carrito></Carrito>
-    
-     <a href="javascript:void(0);" class="icon" @click="myFunction()">
+
+    <a href="javascript:void(0);" class="icon" @click="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
@@ -88,18 +88,23 @@
 <script>
 import Carrito from './Carrito.vue';
 export default {
-    data: () => ({}),
-    methods: {
-        myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            }
-            else {
-                x.className = "topnav";
-            }
-        }
+  data: () => ({}),
+  mounted() { this.activarLink() },
+  methods: {
+    activarLink() {
+      let path = window.location.pathname
+      document.querySelector(`a[href='${path}']`).classList.add("active")
     },
-    components: { Carrito }
+    myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      }
+      else {
+        x.className = "topnav";
+      }
+    }
+  },
+  components: { Carrito }
 }
 </script>
