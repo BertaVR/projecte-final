@@ -33,6 +33,18 @@
 
       <BotonAñadirACarrito :objeto="objeto"></BotonAñadirACarrito>
     </v-card-actions>
+    <v-snackbar v-model="snackbar">
+      {{ objeto.nombre }} borrado del inventario. Actualice la página si quiere visualizar el cambio.
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="pink" text v-bind="attrs" @click="actualizar">
+          Actualizar
+        </v-btn>
+        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+          Cerrar
+        </v-btn>
+      </template>
+    </v-snackbar>
 
     <v-card-actions>
 
@@ -80,8 +92,8 @@
 
 .botonesPack {
   display: flex;
-  justify-content:space-evenly;
-  
+  justify-content: space-evenly;
+
 }
 
 .botonesPack div {
@@ -102,13 +114,16 @@ export default {
     serverip: "127.0.0.1:3000",
     packs: [],
     show: false,
+    snackbar: false,
 
 
   }),
 
   props: ['objeto', 'inventarioItems'],
   methods: {
-
+    actualizar() {
+      window.location.reload();
+    },
     async inventarioPacks() { // TODO: Esto hay que refactorizarlo ya que es codigo repetido -> Hay que cogerlo del padre
       try {
         const packs = await axios.get(`http://${this.serverip}/packs`);
@@ -129,7 +144,8 @@ export default {
           if (response.ok) {
             console.log("Response OK Status:", response.status);
             console.log("Item borrado:", response.statusText);
-            this.inventarioPacks();
+            this.snackbar = true
+
           } else {
             console.log("Response Status:", response.status);
             console.log("Reponse statuts text:", response.statusText);

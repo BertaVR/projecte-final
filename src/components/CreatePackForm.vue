@@ -20,6 +20,10 @@
         <v-snackbar :color="snackbar.color" top multiline height="100" font-size="large" v-model="snackbar.show">
             <template v-slot:action="{ attrs }">
                 {{ snackbar.message }}
+
+                <v-btn v-if="snackbar.status == 'exito'" text v-bind="attrs" @click="actualizar">
+                    Actualizar
+                </v-btn>
                 <v-btn text v-bind="attrs" @click="snackbar.show = false">
                     Cerrar
                 </v-btn>
@@ -62,18 +66,21 @@ export default {
             !this.$v.nombre.maxLength && errors.push("El nombre no puede tener más de 40 caracteres.");
             return errors;
         },
-          itemsErrores() {
+        itemsErrores() {
             const errors = [];
             if (!this.$v.itemsEnElPack.$dirty)
                 return errors;
-            !this.itemsEnElPack.length>0 && errors.push("El campo items debe tener por lo menos 1 elemento seleccionado");
-            
+            !this.itemsEnElPack.length > 0 && errors.push("El campo items debe tener por lo menos 1 elemento seleccionado");
+
             return errors;
         },
 
 
     },
     methods: {
+        actualizar() {
+            window.location.reload();
+        },
         gestionErroresMessage(statusCode) { if (statusCode == 409) { return "Ya hay un pack con ese nombre" } }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp
 
         algunCampoEstaVacio() {
@@ -139,9 +146,10 @@ export default {
                         // this.$refs['itemsEnElPack'].reset();
                         // this.itemsEnElPack = []
                         this.snackbar = {
-                            message: ` ${data.nombre} añadido con éxito`,
+                            message: ` ${data.nombre} añadido con éxito, actualice para verlo`,
                             color: 'success',
-                            show: true
+                            show: true,
+                            status: 'exito'
                         }
                         this.clear()
 
@@ -153,7 +161,8 @@ export default {
                         this.snackbar = {
                             message: this.gestionErroresMessage(response.status),
                             color: 'error',
-                            show: true
+                            show: true,
+                            status: 'error'
                         }
                     }
                 })
