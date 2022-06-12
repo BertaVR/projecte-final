@@ -3,6 +3,7 @@
 <Header></Header>
 <CreatePackForm></CreatePackForm>
 <Packs></Packs>
+<Footer></Footer>
 </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Packs from "../components/Packs.vue";
 import Header from "../components/Header.vue";
 import CreatePackForm from "../components/CreatePackForm.vue";
+import Footer from "../components/Footer.vue";
 // @ is an alias to /src
 
 export default {
@@ -17,7 +19,8 @@ export default {
   components: {
     Packs,
     Header,
-    CreatePackForm
+    CreatePackForm,
+    Footer
 },
 };
 </script>
