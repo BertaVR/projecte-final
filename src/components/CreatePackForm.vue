@@ -70,7 +70,7 @@ export default {
             const errors = [];
             if (!this.$v.itemsEnElPack.$dirty)
                 return errors;
-            !this.itemsEnElPack.length > 0 && errors.push("El campo items debe tener por lo menos 1 elemento seleccionado");
+            !this.itemsEnElPack.length > 0 && errors.push("Añada al menos 1 item");
 
             return errors;
         },
