@@ -183,6 +183,7 @@ export default {
                             color: 'success',
                             show: true
                         }
+                        this.clear()
                     } else {
                         console.log("Response Status:", response.status);
                         console.log("Reponse statuts text:", response.statusText);

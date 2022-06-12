@@ -35,7 +35,7 @@ export default {
     mixins: [validationMixin],
     validations: {
         nombre: { required, minLength: minLength(3), maxLength: maxLength(40) },
-        itemsEnElPack: { required },
+        itemsEnElPack: { minLength: minLength(1) },
 
     },
     data: () => ({
@@ -60,6 +60,14 @@ export default {
             !this.$v.nombre.minLength && errors.push("El nombre debe tener por lo menos 3 caracteres");
             !this.$v.nombre.required && errors.push("El campo nombre es obligatorio.");
             !this.$v.nombre.maxLength && errors.push("El nombre no puede tener más de 40 caracteres.");
+            return errors;
+        },
+          itemsErrores() {
+            const errors = [];
+            if (!this.$v.itemsEnElPack.$dirty)
+                return errors;
+            !this.itemsEnElPack.length>0 && errors.push("El campo items debe tener por lo menos 1 elemento seleccionado");
+            
             return errors;
         },
 
