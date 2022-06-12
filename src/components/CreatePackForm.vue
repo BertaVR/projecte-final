@@ -63,6 +63,7 @@ export default {
             return errors;
         },
 
+
     },
     methods: {
         gestionErroresMessage(statusCode) { if (statusCode == 409) { return "Ya hay un pack con ese nombre" } }, //la gestión de errores me gustaría haberla hecho en back pero no he podidp

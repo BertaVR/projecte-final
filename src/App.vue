@@ -17,10 +17,9 @@ const vuetify = new Vuetify({
     themes: {
       light: {
         primary: '#8E44AD',
-        secondary: '#b0bec5',
         warning: '#8f8fff',
         error: '#f05666',
-        accent:  '#511863',
+        secondary:  '#511863',
       },
     },
   },

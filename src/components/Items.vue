@@ -1,7 +1,7 @@
 
 <template>
     <div class="pantallaItems">
-        <v-btn class="tituloFiltros" color=" accent" @click="expand = !expand">
+        <v-btn class="tituloFiltros" color=" secondary" @click="expand = !expand">
             <div>Filtrar</div>
             <v-btn icon>
                 <v-icon>{{ expand ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>

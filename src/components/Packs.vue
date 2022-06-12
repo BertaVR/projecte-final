@@ -1,7 +1,7 @@
 <template>
     <div class="pantalla-de-packs">
 
-<v-btn class="tituloFiltros"         color=" accent"
+<v-btn class="tituloFiltros"         color=" secondary"
      
      
  @click="expand = !expand">

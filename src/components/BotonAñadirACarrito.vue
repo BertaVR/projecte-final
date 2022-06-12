@@ -1,6 +1,6 @@
 <template>
     <div class="añadir.carro">
-        <v-btn color="accent" @click="añadirAlCarro(objeto)"> <img id="iconoAñadirACarro" src="../assets/add-cart.png">
+        <v-btn color="secondary" @click="añadirAlCarro(objeto)"> <img id="iconoAñadirACarro" src="../assets/add-cart.png">
         </v-btn>
         <v-snackbar v-model="snackbar">
             {{ objeto.nombre }} añadido al carrito
