@@ -121,7 +121,7 @@ export default {
             if (!this.$v.stock.$dirty) return errors
             !this.$v.stock.required && errors.push('Es necesario especificar el stock.')
             !this.$v.stock.integer && errors.push('El stock tiene que ser un número entero.')
-            !this.$v.stock.minValue && errors.push('El stock tiene que ser un número positivo.')
+            !this.$v.stock.minValue && errors.push('El stock tiene que ser un número mayor que 0.')
 
 
             return errors
